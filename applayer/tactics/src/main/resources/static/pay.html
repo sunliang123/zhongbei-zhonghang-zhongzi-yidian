@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+function getQueryString(name) { 
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+	var r = window.location.search.substr(1).match(reg); 
+	if (r != null) return unescape(r[2]); return null; 
+}
+
+$(function(){
+	var sourceId = getQueryString("sourceId");
+	document.getElementById("sourceId").value = sourceId;
+	var phone = getQueryString("phone");
+	document.getElementById("inputPhone").value = phone;
+	
+	$("#prePayBtn").on("click", function() {
+		var amount = $("#inputAmount").val();
+		$.ajax({
+            type: "POST",
+            url: "../quickpay/rongSmsQuickPrePay?sourceId=" + sourceId + "&amount=" + amount,
+            contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+            dataType: "json",
+            success: function (jsonResult) {
+            	if(jsonResult.code === "200") {
+            		alert("发送成功!");
+            		$("#inputOrderNo").val(jsonResult.result);
+            	} else {
+            		alert(jsonResult.message);
+            	}
+            }
+        });
+	});
+	
+	$("#smsPayBtn").on("click", function() {
+		var orderNo = $("#inputOrderNo").val();
+		var checkCode = $("#inputCheckCode").val();
+		$.ajax({
+            type: "POST",
+            url: "../quickpay/rongSmsQuickSmsPay?orderNo=" + orderNo + "&checkCode=" + checkCode,
+            contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+            dataType: "json",
+            success: function (jsonResult) {
+            	if(jsonResult.code === "200") {
+            		alert("请求支付成功!");
+            	} else {
+            		alert(jsonResult.message);
+            	}
+            }
+        });
+	});
+});
+</script>
+</head>
+<body>
+<h3>支付页面</h3>
+<form>
+	<div>
+		<label>支付金额</label>
+		<input id="inputAmount" type="text" name="amount" />
+		<input id="sourceId" type="hidden" name="sourceId" />
+		<input id="inputOrderNo" type="hidden" name="orderNo" />
+	</div>
+	<div>
+		<label>　手机号</label>
+		<input id="inputPhone" type="text" name="phone" readonly="readonly" />
+		<input id="prePayBtn" type="button" value="发送验证码" />
+	</div>
+	<div>
+		<label>　验证码</label>
+		<input id="inputCheckCode" type="text" name="checkCode" />
+	</div>
+	<div>
+		<input id="smsPayBtn" type="button" value="确认支付" />
+	</div>
+</form>
+</body>
+</html>

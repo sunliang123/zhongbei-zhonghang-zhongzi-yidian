@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="decorator/layout">
+
+<body>
+<div class="content" layout:fragment="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="card card-wizard" id="wizardCard">
+					<div class="header">
+						<legend>编辑更新</legend>
+					</div>
+					<form class="form-horizontal from-main" id="msgForm" action="javascript:void(0)">
+						<input type="hidden" name="id" th:value="${capitalAccount.id}" />
+						<input type="hidden" name="paymentPassword" th:value="${capitalAccount.paymentPassword}" />
+						<input type="hidden" name="publisherId" th:value="${capitalAccount.publisherId}" />
+						<input type="hidden" name="publisherSerialCode" th:value="${capitalAccount.publisherSerialCode}" />
+						<input type="hidden" name="updateTime" th:value="${capitalAccount.updateTime}" />
+						
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>账户余额</label>
+                                    <input name="balance" type="text" class="form-control" placeholder="" th:value="${capitalAccount.balance}" />
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>账户可用余额</label>
+                                    <input name="availableBalance" type="text" class="form-control" placeholder="" th:value="${capitalAccount.availableBalance}" />
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <label>冻结资金</label>
+                                    <input name="frozenCapital" type="text" class="form-control" placeholder="" th:value="${capitalAccount.frozenCapital}" />
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>支付密码</label>
+                                    <input name="paymentPassword" type="text" class="form-control" placeholder="" th:value="${capitalAccount.paymentPassword}" />
+                                </div>
+                            </div>
+                        </div>
+                        
+						<div class="row edit-button">
+							<div class="col-md-5"></div>
+							<button id="submit" class="btn btn-info btn-fill">更新</button>
+						</div>
+                        
+                        <div class="clearfix"></div>
+                   </form>
+                </div>
+            </div>
+		</div>
+	</div>
+	<script th:src="@{/static/js/jquery.min.js}" type="text/javascript"></script>
+	<script type="text/javascript">
+      $("#submit").on('click',function () {
+  		$.ajax({
+  			url:'../modify',
+  			type:'post',
+  			data:$("#msgForm").serialize(),
+  			success:function (response) {
+  				if(response.code != '200'){
+  					console.log("------服务器出错-------");
+					return false;	
+  				}
+   				var data = response.result;
+   				var id = $("input[name='id']").val();
+   				if(data.id == id){
+   					swal({
+   							text : '更新成功', 
+   							type : 'success'
+   						},function(){
+   						setTimeout(function(){
+   							$(location).prop('href',"../index");
+   						},500);
+   					});
+   				}
+  			}
+  		})
+  	  });	
+	</script>
+</div>
+</body>
+</html>

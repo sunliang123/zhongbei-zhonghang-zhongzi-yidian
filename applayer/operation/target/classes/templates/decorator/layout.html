@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title th:text="${session.companyName}+'运营管理系统'"></title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+    <link th:href="@{/static/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/static/css/light-bootstrap-dashboard.css}" rel="stylesheet"/>
+    <link th:href="@{/static/css/demo.css}" rel="stylesheet"/>
+    <link th:href="@{/static/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link th:href="@{/static/css/pe-icon-7-stroke.css}" rel="stylesheet"/>
+    <link th:href="@{/static/css/view.css}" rel="stylesheet"/>
+    <!--<link th:href="@{/static/css/css.css}" rel="stylesheet"/>-->
+    <!--<link th:href="@{/static/css/astyle.css}" rel="stylesheet"/>-->
+</head>
+<body>
+<div class="wrapper">
+    <div th:replace="decorator/left :: left"></div>
+    <div class="main-panel">
+        <div th:replace="decorator/head :: head"></div>
+        <div layout:fragment="content">
+            <!--<div class="container-fluid">-->
+                <!--<div class="row">-->
+                    <!--<div class="col-lg-3 col-md-6 col-sm-6">-->
+                        <!--<div class="card card-stats">-->
+                            <!--<div class="card-header" data-background-color="green">-->
+                                <!--<i class="material-icons">store</i>-->
+                            <!--</div>-->
+                            <!--<div class="card-content">-->
+                                <!--<p class="category">配资</p>-->
+                                <!--<h3 class="title" th:text="'+$'+${buyRecordProfitAndPosition.todayProfit}">$0</h3>-->
+                            <!--</div>-->
+                            <!--<div class="card-footer">-->
+                                <!--<div class="stats">-->
+                                    <!--<i class="material-icons">date_range</i>今天收入-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-lg-3 col-md-6 col-sm-6">-->
+                        <!--<div class="card card-stats">-->
+                            <!--<div class="card-header" data-background-color="green">-->
+                                <!--<i class="material-icons">store</i>-->
+                            <!--</div>-->
+                            <!--<div class="card-content">-->
+                                <!--<p class="category">配资</p>-->
+                                <!--<h3 class="title" th:text="'$'+${buyRecordProfitAndPosition.allProfit}">$0</h3>-->
+                            <!--</div>-->
+                            <!--<div class="card-footer">-->
+                                <!--<div class="stats">-->
+                                    <!--<i class="material-icons">date_range</i> 总收入-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-lg-3 col-md-6 col-sm-6">-->
+                        <!--<div class="card card-stats">-->
+                            <!--<div class="card-header" data-background-color="blue">-->
+                                <!--<i class="material-icons">store</i>-->
+                            <!--</div>-->
+                            <!--<div class="card-content">-->
+                                <!--<p class="category">期权</p>-->
+                                <!--<h3 class="title" th:text="'$'+${stockOptionTradeProfitAndPosition.allProfit}">$34,245</h3>-->
+                            <!--</div>-->
+                            <!--<div class="card-footer">-->
+                                <!--<div class="stats">-->
+                                    <!--<i class="material-icons">date_range</i> 总收入-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-lg-3 col-md-6 col-sm-6">-->
+                        <!--<div class="card card-stats">-->
+                            <!--<div class="card-header" data-background-color="blue">-->
+                                <!--<i class="material-icons">store</i>-->
+                            <!--</div>-->
+                            <!--<div class="card-content">-->
+                                <!--<p class="category">期权</p>-->
+                                <!--<h3 class="title" th:text="'+$'+${stockOptionTradeProfitAndPosition.todayProfit}">$0</h3>-->
+                            <!--</div>-->
+                            <!--<div class="card-footer">-->
+                                <!--<div class="stats">-->
+                                    <!--<i class="material-icons">date_range</i> 今天收入-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<div class="col-lg-3 col-md-6 col-sm-6">-->
+                        <!--<div class="card card-stats">-->
+                            <!--<div class="card-header" data-background-color="orange">-->
+                                <!--<i class="material-icons">content_copy</i>-->
+                            <!--</div>-->
+                            <!--<div class="card-content">-->
+                                <!--<p class="category">配资</p>-->
+                                <!--<h3 class="title" th:text="'+'+${buyRecordProfitAndPosition.todayCount}">+0</h3>-->
+                            <!--</div>-->
+                            <!--<div class="card-footer">-->
+                                <!--<div class="stats">-->
+                                    <!--<i class="material-icons">local_offer</i>今日成交-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-lg-3 col-md-6 col-sm-6">-->
+                        <!--<div class="card card-stats">-->
+                            <!--<div class="card-header" data-background-color="orange">-->
+                                <!--<i class="material-icons">content_copy</i>-->
+                            <!--</div>-->
+                            <!--<div class="card-content">-->
+                                <!--<p class="category">配资</p>-->
+                                <!--<h3 class="title" th:text="${buyRecordProfitAndPosition.allCount}">0</h3>-->
+                            <!--</div>-->
+                            <!--<div class="card-footer">-->
+                                <!--<div class="stats">-->
+                                    <!--<i class="material-icons">local_offer</i>总成交-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-lg-3 col-md-6 col-sm-6">-->
+                        <!--<div class="card card-stats">-->
+                            <!--<div class="card-header" data-background-color="red">-->
+                                <!--<i class="material-icons">content_copy</i>-->
+                            <!--</div>-->
+                            <!--<div class="card-content">-->
+                                <!--<p class="category">期权</p>-->
+                                <!--<h3 class="title" th:text="${stockOptionTradeProfitAndPosition.allCount}">0</h3>-->
+                            <!--</div>-->
+                            <!--<div class="card-footer">-->
+                                <!--<div class="stats">-->
+                                    <!--<i class="material-icons">local_offer</i> 总成交-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-lg-3 col-md-6 col-sm-6">-->
+                        <!--<div class="card card-stats">-->
+                            <!--<div class="card-header" data-background-color="red">-->
+                                <!--<i class="material-icons">content_copy</i>-->
+                            <!--</div>-->
+                            <!--<div class="card-content">-->
+                                <!--<p class="category">期权</p>-->
+                                <!--<h3 class="title" th:text="'+'+${stockOptionTradeProfitAndPosition.todayCount}">+0</h3>-->
+                            <!--</div>-->
+                            <!--<div class="card-footer">-->
+                                <!--<div class="stats">-->
+                                    <!--<i class="material-icons">local_offer</i>今日成交-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="panel panel-default card-view">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="panel-heading">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="pull-left">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<h6 class="panel-title txt-dark"><i class="icon-share mr-10"></i>&nbsp;&nbsp;&nbsp;&nbsp;收入趋势</h6>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="pull-right">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<select name="year">&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<option>2018</option>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<option>2019</option>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<option>2020</option>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="clearfix">&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="panel-wrapper collapse in">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="panel-body"><iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px none; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<canvas id="chart_1" height="417" style="display: block; width: 1146px; height: 417px;" width="1146"></canvas>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+
+<div class="fixed-plugin">
+    <div class="dropdown">
+        <a href="#" data-toggle="dropdown">
+            <i class="fa fa-cog fa-2x"> </i>
+        </a>
+        <ul class="dropdown-menu">
+            <li class="header-title">配置</li>
+            <li class="adjustments-line">
+                <a href="javascript:void(0)" class="switch-trigger">
+                    <p>侧边栏的图像</p>
+                    <div class="switch switch-sidebar-image" data-on-label="ON" data-off-label="OFF">
+                        <input type="checkbox" checked="checked"/>
+                    </div>
+                    <div class="clearfix"></div>
+                </a>
+            </li>
+            <li class="adjustments-line">
+                <a href="javascript:void(0)" class="switch-trigger">
+                    <p>侧边栏迷你</p>
+                    <div class="switch  switch-sidebar-mini" data-on-label="ON" data-off-label="OFF">
+                        <input type="checkbox"/>
+                    </div>
+                    <div class="clearfix"></div>
+                </a>
+            </li>
+            <li class="adjustments-line">
+                <a href="javascript:void(0)" class="switch-trigger">
+                    <p>固定导航栏</p>
+                    <div class="switch  switch-navbar-fixed" data-on-label="ON" data-off-label="OFF">
+                        <input type="checkbox"/>
+                    </div>
+                    <div class="clearfix"></div>
+                </a>
+            </li>
+            <li class="adjustments-line">
+                <a href="javascript:void(0)" class="switch-trigger">
+                    <p>过滤器</p>
+                    <div class="pull-right">
+                        <span class="badge filter" data-color="black"></span>
+                        <span class="badge filter badge-azure" data-color="azure"></span>
+                        <span class="badge filter badge-green" data-color="green"></span>
+                        <span class="badge filter badge-orange active" data-color="orange"></span>
+                        <span class="badge filter badge-red" data-color="red"></span>
+                        <span class="badge filter badge-purple" data-color="purple"></span>
+                    </div>
+                    <div class="clearfix"></div>
+                </a>
+            </li>
+            <li class="header-title">侧边栏图片</li>
+            <li>
+                <a class="img-holder switch-trigger" href="javascript:void(0)">
+                    <img th:src="@{/static/img/full-screen-image-1.jpg}"/>
+                </a>
+            </li>
+            <li>
+                <a class="img-holder switch-trigger" href="javascript:void(0)">
+                    <img th:src="@{/static/img/full-screen-image-2.jpg}"/>
+                </a>
+            </li>
+            <li class="active">
+                <a id="nav-bg" class="img-holder switch-trigger" href="javascript:void(0)">
+                    <img th:src="@{/static/img/full-screen-image-3.jpg}"/>
+                </a>
+            </li>
+            <li>
+                <a class="img-holder switch-trigger" href="javascript:void(0)">
+                    <img th:src="@{/static/img/full-screen-image-4.jpg}"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+<script th:src="@{/static/js/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/static/js/jquery-ui.min.js}" type="text/javascript"></script>
+<script th:src="@{/static/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/static/js/jquery.validate.min.js}" type="text/javascript"></script>
+<script th:src="@{/static/js/moment.min.js}" type="text/javascript"></script>
+<script th:src="@{/static/js/bootstrap-datetimepicker.js}" type="text/javascript"></script>
+<script th:src="@{/static/js/bootstrap-selectpicker.js}" type="text/javascript"></script>
+<script th:src="@{/static/js/bootstrap-checkbox-radio-switch-tags.js}" type="text/javascript"></script>
+<script th:src="@{/static/js/bootstrap-notify.js}" type="text/javascript"></script>
+<script th:src="@{/static/js/sweetalert2.js}" type="text/javascript"></script>
+<script th:src="@{/static/js/jquery-jvectormap.js}" type="text/javascript"></script>
+<script th:src="@{/static/js/jquery.bootstrap.wizard.min.js}" type="text/javascript"></script>
+<script th:src="@{/static/js/bootstrap-table.js}" type="text/javascript"></script>
+<script th:src="@{/static/js/jquery.datatables.js}" type="text/javascript"></script>
+<script th:src="@{/static/js/fullcalendar.min.js}" type="text/javascript"></script>
+<script th:src="@{/static/js/light-bootstrap-dashboard.js}" type="text/javascript"></script>
+<script th:src="@{/static/js/jquery.sharrre.js}" type="text/javascript"></script>
+<!--<script th:src="@{/static/js/layer/layer.js}" type="text/javascript"></script>-->
+<!--<script th:src="@{/static/js/Chart.js}" type="text/javascript"></script>-->
+<!--<script th:src="@{/static/js/demo.js}" type="text/javascript"></script>-->
+<!--<script th:src="@{/static/js/morris/raphael-2.0.2.min.js}" type="text/javascript"></script>-->
+<!--<script th:src="@{/static/js/morris/morris.js}" type="text/javascript"></script>-->
+<!--<script th:src="@{/static/js/morris/morris-init.js}" type="text/javascript"></script>-->
+
+<script type="text/javascript">
+    //<![CDATA[
+	var children =  sessionStorage.getItem('children');
+	var parent   =  sessionStorage.getItem('parent');
+	
+	$('#menu > li').each(function() {
+		if($(this).index()==parent){
+			$(this).find('a').attr({'class':'','aria-expanded':'true'});
+			$(this).find('div').attr({'class':'collapse in','aria-expanded':'true','style':''});
+			$(this).attr('class','active');
+			$(this).find('li').each(function(){
+				if($(this).index()==children){
+					$(this).attr('class','active');
+				}
+			})
+		}
+	})
+
+	$(function() {
+		$('#menu > li > div > ul > li').each(function() {
+			$(this).click(function() {
+				sessionStorage.setItem('children', $(this).index())
+			})
+		})
+	})
+	
+	$(function() {
+		$('#menu > li').each(function() {
+			$(this).click(function() {
+				sessionStorage.setItem('parent', $(this).index())
+			})
+		})
+	})
+
+
+    //]]>
+</script>
+
+</html>

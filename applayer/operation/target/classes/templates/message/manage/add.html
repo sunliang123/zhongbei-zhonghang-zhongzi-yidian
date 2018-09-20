@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="decorator/layout">
+
+<body>
+<div class="content" layout:fragment="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="card card-wizard" id="wizardCard">
+					<div class="header">
+						<legend>添加信息</legend>
+					</div>
+					<form class="form-horizontal from-main" id="msgForm" action="javascript:void(0)">
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>标题</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <input name="title" type="text" class="form-control" placeholder="标题" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>内容</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <input name="content" type="text" class="form-control" placeholder="内容" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>跳转链接</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <input name="link" type="text" class="form-control" placeholder="跳转链接" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>类型</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <select name="type" class="selectpicker">
+                                        <option th:each="state,stateStart : ${types}"
+                                                th:value="${state.index}" th:text="${state.type}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset id="publisher">
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>发布人</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <select name="publisherId" class="selectpicker">
+                                        <option th:each="publisher:${publishers}" th:value="${publisher.id}" th:text="${publisher.phone}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>站内站外</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <select name="isOutside" class="selectpicker">
+                                        <option value="0">站内</option>
+                                        <option value="1">站外</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset id="outsideMsgType" hidden="hidden">
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>站外类型</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <select name="outsideMsgType" class="selectpicker">
+                                        <!--<option value="1">已发布</option>-->
+                                        <!--<option value="2">买入锁定</option>-->
+                                        <!--<option value="3">持仓中</option>-->
+                                        <!--<option value="4">卖出申请</option>-->
+                                        <!--<option value="5">卖出锁定</option>-->
+                                        <!--<option value="6">已平仓</option>-->
+                                        <!--<option value="7">买入失败</option>-->
+                                        <!--<option value="8">卖出失败</option>-->
+                                        <!--<option value="9">充值成功</option>-->
+                                        <!--<option value="10">提现成功</option>-->
+                                        <!--<option value="11">提现失败</option>-->
+                                        <option th:each="state,stateStart : ${outsideMessageType}"
+                                                th:value="${state.index}" th:text="${state.type}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+						<div class="row edit-button">
+							<div class="col-md-4"></div>
+							<button id="submit" class="btn btn-info btn-fill">确认添加</button>
+						</div>
+                        
+                        <div class="clearfix"></div>
+                   </form>
+                </div>
+            </div>
+		</div>
+	</div>
+	<script th:src="@{/static/js/jquery.min.js}" type="text/javascript"></script>
+	<script type="text/javascript">
+        $("[name='isOutside']").change(function() {
+            var value = $("[name='isOutside']").val();
+            if(value=='1') {
+                $("#outsideMsgType").show();
+            }else {
+                $("#outsideMsgType").hide();
+            }
+        })
+        $("[name='type']").change(function() {
+            var value = $("[name='type']").val();
+            if(value=='1') {
+                $("#publisher").show();
+            }else {
+                $("#publisher").hide();
+            }
+        })
+      $("#submit").on('click',function () {
+  		$.ajax({
+  			url:'../messaging/save',
+  			type:'post',
+  			data:$("#msgForm").serialize(),
+  			success:function (response) {
+  				if(response.code != '200'){
+  					swal("------服务器出错-------");
+					return false;	
+  				}
+                if(response.result!=null){
+                    swal({
+                        text : '添加成功',
+                        type : 'success'
+                    },function(){
+                        setTimeout(function(){
+                            $(location).prop('href',"../messaging/index");
+                        },500);
+                    });
+                }
+  			}
+  		})
+  	  });	
+	</script>
+</div>
+</body>
+</html>

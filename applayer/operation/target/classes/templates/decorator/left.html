@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="left" class="sidebar" data-color="azure" th:attr="data-image=@{/static/img/full-screen-image-3.jpg}">
+    <div class="logo">
+        <a href="#" class="logo-text">
+
+        </a>
+    </div>
+    <div class="logo logo-mini">
+        <a href="#" class="logo-text">
+
+        </a>
+    </div>
+
+    <div class="sidebar-wrapper">
+        <div class="user">
+            <div class="photo">
+                <img th:src="@{/static/img/default-avatar.png}"/>
+            </div>
+            <div class="info">
+                <a data-toggle="collapse" href="#collapseExample" class="collapsed" >
+                    <span th:text="${session.userName}" id="userInfo"></span>
+                    <!-- 
+                    <b class="caret"></b>
+                     -->
+                </a>
+                <!-- 
+                <div class="collapse" id="collapseExample">
+                    <ul class="nav">
+                        <li>
+                            <a href="#">我的个人资料</a>
+                        </li>
+                        <li>
+                            <a href="#">编辑配置文件</a>
+                        </li>
+                        <li>
+                            <a href="#">设置</a>
+                        </li>
+                    </ul>
+                </div>
+                 -->
+            </div>
+        </div>
+
+        <ul class="nav" id="menu">
+            <li th:each="menu : ${session.menus}">
+                <a data-toggle="collapse" th:href="'#'+${menu.id}" >
+                    <i th:class="${menu.icon}"></i>
+                    <p><span th:text="${menu.name}"></span>
+                        <b th:class="caret" th:if="${#lists.size(menu.childs)}!='0'"></b>
+                    </p>
+                </a>
+                <div  class="collapse" th:id="${menu.id}">
+                    <ul class="nav">
+                        <li th:each ="list : ${menu.childs}">
+                            <a th:href="@{${list.url}}" th:text="${list.name}"></a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

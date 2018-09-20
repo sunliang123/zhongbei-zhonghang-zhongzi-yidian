@@ -1,0 +1,29 @@
+<div class="wrapper-md" ng-controller="settlementAdminController">
+    <!-- toaster directive -->
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <!-- / toaster directive -->
+    <div class="panel panel-default mb0">
+        <div class="table-responsive">
+            <table id="settlementAdminTable" 
+                ui-jq="dataTable" 
+                ui-options="{
+                    ajax: '/collector/settlement/list'
+                }" 
+                ui-columns-attr="settlementColumns" 
+                ui-btn-add-click="doSettlementAdd();" 
+                ui-btn-edit-click="doSettlementEdit();" 
+                ui-btn-remove-click="doSettlementRemove();" 
+                class="table table-striped table-bordered m-b-none">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="settlement_add.html">
+        <div ng-include="'src/html/settlement/settlement_add.html'"></div>
+    </script>
+    <script type="text/ng-template" id="settlement_edit.html">
+        <div ng-include="'src/html/settlement/settlement_edit.html'"></div>
+    </script>
+</div>

@@ -1,0 +1,68 @@
+<div class="modal-body wrapper-lg">
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="settlementEditForm" class="form-horizontal form-validation">
+                <input type="hidden" ng-model="settlement.id" />
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <strong>修改结算</strong>
+                    </div>
+                    <div class="panel-body pb0">
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">数据ID：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="settlement.dataId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">应用域：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="settlement.domain" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">对应的点买记录：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="settlement.buyRecordId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">盈亏：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="settlement.profitOrLoss" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">发布人盈亏：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="settlement.publisherProfitOrLoss" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">投资人盈亏：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="settlement.investorProfitOrLoss" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">结算时间：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="settlement.settlementTime" type="text" ng-pattern="/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/" placeholder="日期格式为：yyyy-MM-dd HH:mm:ss" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+                    </div>
+                    <footer class="panel-footer text-right">
+                        <button ng-click="requestSettlementEdit(settlementEditForm.$valid);" type="submit" class="btn btn-success">保存</button>
+                    </footer>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function getQueryString(name) { 
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+	var r = window.location.search.substr(1).match(reg); 
+	if (r != null) return decodeURI(r[2]); return null; 
+}
+window.onload = function() {
+	var sourceId = getQueryString("sourceId");
+	document.getElementById("sourceId").value = sourceId;
+	var phone = getQueryString("phone");
+	document.getElementById("phone").innerText = phone;
+	
+	var error = getQueryString("error");
+	if(error) {
+		alert(error);
+	}
+}
+</script>
+</head>
+<body>
+<p>为了保障您的用卡安全，本次签约需要短信确认，验证码已发送至手机<span id="phone"></span></p>
+<form action="../quickpay/rongSmsQuickSign" method="post">
+	<div>
+		<label>验证码</label>
+		<input type="text" name="checkCode" />
+		<input id="sourceId" type="hidden" name="sourceId" />
+	</div>
+	<div>
+		<input type="submit" value="确认签约" />
+	</div>
+</form>
+</body>
+</html>

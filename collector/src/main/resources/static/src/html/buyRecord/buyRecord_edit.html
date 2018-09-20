@@ -1,0 +1,272 @@
+<div class="modal-body wrapper-lg">
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="buyRecordEditForm" class="form-horizontal form-validation">
+                <input type="hidden" ng-model="buyRecord.id" />
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <strong>修改点买记录</strong>
+                    </div>
+                    <div class="panel-body pb0">
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">数据ID：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.dataId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">应用域：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.domain" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">系列号：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.serialCode" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">交易编号：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.tradeNo" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">申请资金：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.applyAmount" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">信息服务费：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.serviceFee" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">保证金：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.reserveFund" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">是否递延：</label>
+	                            <div class="col-sm-9">
+	                            	<input ng-model="buyRecord.deferred" type="radio" ng-value="true">是&nbsp;&nbsp;
+									<input ng-model="buyRecord.deferred" type="radio" ng-value="false">否
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">递延费：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.deferredFee" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">止盈点：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.profitPoint" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">止盈预警点位：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.profitWarnPosition" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">止盈点位：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.profitPosition" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">止损点：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.lossPoint" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">杠杆倍数：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.lossMultiple" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">止损预警点位：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.lossWarnPosition" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">止损点位：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.lossPosition" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">状态：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.state" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">持股数：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.numberOfStrand" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">委托价格：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.delegatePrice" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">委托编号：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.delegateNumber" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">点买时间：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.buyingTime" type="text" ng-pattern="/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/" placeholder="日期格式为：yyyy-MM-dd HH:mm:ss" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">买入价格：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.buyingPrice" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">到期时间：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.expireTime" type="text" ng-pattern="/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/" placeholder="日期格式为：yyyy-MM-dd HH:mm:ss" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">风控类型：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.windControlType" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">卖出时间：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.sellingTime" type="text" ng-pattern="/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/" placeholder="日期格式为：yyyy-MM-dd HH:mm:ss" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">卖出价格：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.sellingPrice" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">股票代码：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.stockCode" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">股票名称：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.stockName" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">策略类型ID：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.strategyTypeId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">投资人ID：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.investorId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">投资人名称：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.investorName" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">发布人ID：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.publisherId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">发布人序列号：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.publisherSerialCode" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">发布人手机号：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.publisherPhone" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">点买记录创建时间：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.createTime" type="text" ng-pattern="/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/" placeholder="日期格式为：yyyy-MM-dd HH:mm:ss" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">点买记录更新时间：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="buyRecord.updateTime" type="text" ng-pattern="/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/" placeholder="日期格式为：yyyy-MM-dd HH:mm:ss" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+                    </div>
+                    <footer class="panel-footer text-right">
+                        <button ng-click="requestBuyRecordEdit(buyRecordEditForm.$valid);" type="submit" class="btn btn-success">保存</button>
+                    </footer>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

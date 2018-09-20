@@ -1,0 +1,99 @@
+@CHARSET "UTF-8";
+.layui-layout-admin .layui-logo {
+	font-size: 20px;
+	font-family: '微软雅黑';
+	font-weight: bold;
+	color: #eee;
+}
+.layui-nav-item a:hover {
+	text-decoration: none;
+}
+.layui-nav-child a:hover {
+	text-decoration: none;
+}
+.layui-nav-tree a:hover, .layui-nav-tree a:visited {
+	text-decoration: none;
+}
+.layui-nav dl {
+	margin-bottom: 0px;
+}
+.layui-nav .layui-icon {
+	margin-right: 5px;
+	font-size: 17px;
+}
+.layui-nav dl dd {
+	padding-left: 23px;
+}
+
+table.dataTable thead tr th:first-child:after {
+	content: "";
+}
+.normal-color {
+	color: #333!important;
+}
+.blue-color {
+	color: #1f9ed7;
+}
+.near-label {
+	padding-left: 0px;
+	text-align: center;
+}
+/** 一些通用样式 **/
+.width300 {
+	width: 300px!important;
+}
+.width150 {
+	width: 150px!important;
+}
+.width100 {
+	width: 100px;
+}
+.width90 {
+	width: 90px;
+}
+.width70 {
+	width: 70px;
+}
+.width60 {
+	width: 60px;
+}
+.width50 {
+	width: 50px;
+}
+.width10 {
+	width: 10px;
+}
+.ml10 {
+	margin-left: 10px;
+}
+.mr5 {
+	margin-right: 5px;
+}
+.mr10 {
+	margin-right: 10px;
+}
+.mr20 {
+	margin-right: 20px;
+}
+.mb5 {
+	margin-bottom: 5px;
+}
+.mb10 {
+	margin-bottom: 10px;
+}
+.mb20 {
+	margin-bottom: 20px;
+}
+.plr0 {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.align-center {
+	text-align: center;
+}
+.align-left {
+	text-align: left;
+}
+.align-right {
+	text-align: right;
+}

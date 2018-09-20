@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<form id="topay" action="http://211.149.180.207/gateWay/service/bankOnline/fastPay" method="post" style="display:none">
+    <div>
+        userId:<input type="text" name="userId" th:value="${result.userId}"/><br/>
+        mchNo:<input type="text" name="mchNo" th:value="${result.mchNo}"/><br/>
+        mchType:<input type="text" name="mchType" th:value="${result.mchType}"/><br/>
+        payChannel:<input type="text" name="payChannel" th:value="${result.payChannel}"/><br/>
+        payChannelTypeNo:<input type="text" name="payChannelTypeNo" th:value="${result.payChannelTypeNo}"/><br/>
+        frontUrl:<input type="text" name="frontUrl"  th:value="${result.frontUrl}"/><br/>
+        notifyUrl: <input type="text" name="notifyUrl" th:value="${result.notifyUrl}"/><br/>
+        orderNo:<input type="text" name="orderNo" th:value="${result.orderNo}"/><br/>
+        amount:<input type="text" name="amount" th:value="${result.amount}"/><br/>
+        goodsName: <input type="text" name="goodsName" th:value="${result.goodsName}"/><br/>
+        goodsDesc:<input type="text" name="goodsDesc" th:value="${result.goodsDesc}"/><br/>
+        timeStamp:<input type="text" name="timeStamp" th:value="${result.timeStamp}"/><br/>
+        sign:<input type="text" name="sign" th:value="${result.sign}"/><br/>
+        <input type="submit" value="提交" id="pay"/>
+    </div>
+</form>
+<script>
+$(function(){
+    $('#topay').submit();
+});
+</script>
+</body>
+</html>

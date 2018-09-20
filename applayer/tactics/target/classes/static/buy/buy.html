@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<style>
+			*{
+				margin: 0; padding: 0;
+				list-style: none;
+				text-decoration: none;
+			}
+			img{
+				display: block;
+			}
+			ul li:first-child{
+				margin-top: 20px;
+			}
+			ul li img{
+				margin: 0 auto;
+				width: 7.08rem;
+				height: 2.36rem;
+			}
+			ul li:nth-child(2n+0){			
+				height: .6rem;
+			}
+			ul li:last-child{
+				margin-bottom: .48rem;
+			}
+			ul li:nth-child(2n+0) img{			
+				width: .28rem;
+				height: .36rem;
+				padding-top: .12rem;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<img src="tu01@2x.png" />
+			</li>
+			<li>
+				<img src="jiantou@2x.png"  />
+			</li>
+			<li>
+				<img src="tu02@2x.png" />
+			</li>
+			<li>
+				<img src="jiantou@2x.png"  />
+			</li>
+			<li>
+				<img src="tu03@2x.png" />
+			</li>
+			<li>
+				<img src="jiantou@2x.png"  />
+			</li>
+			<li>
+				<img src="tu04@2x.png" />
+			</li>
+			<li>
+				<img src="jiantou@2x.png"  />
+			</li>
+			<li>
+				<img src="tu05@2x.png" />
+			</li>
+			<li>
+				<img src="jiantou@2x.png"  />
+			</li>
+			<li>
+				<img src="tu06@2x.png" />
+			</li>
+		</ul>
+	</body>
+	<script>
+	(function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'onorientationchange' in window ? 'onorientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if(clientWidth>=750){
+                    docEl.style.fontSize = '100px';
+                }else{
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                }
+            };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+	</script>
+</html>

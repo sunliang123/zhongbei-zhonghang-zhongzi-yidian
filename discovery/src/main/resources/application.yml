@@ -1,0 +1,29 @@
+server:
+  port: 8882
+management:
+  port: 3332
+  context-path: /turbine
+logging:
+  config: classpath:log/logback.xml
+eureka:
+  instance:
+      prefer-ip-address: true
+      metadata-map:
+        cluser: finance
+        management:
+          port: ${management.port}
+          context-path: ${management.context-path}
+        health:
+          path: ${management.context-path}/health
+      healthCheckUrlPath: ${management.context-path}/health
+      statusPageUrlPath: ${management.context-path}/info
+      hostname: ${spring.cloud.client.ipAddress}
+#      lease-expiration-duration-in-seconds: 30  # 续约到期时间
+#      lease-renewal-interval-in-seconds: 10  #续约更新时间间隔
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+          defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: false

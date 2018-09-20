@@ -1,0 +1,29 @@
+<div class="wrapper-md" ng-controller="domainTableAdminController">
+    <!-- toaster directive -->
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <!-- / toaster directive -->
+    <div class="panel panel-default mb0">
+        <div class="table-responsive">
+            <table id="domainTableAdminTable" 
+                ui-jq="dataTable" 
+                ui-options="{
+                    ajax: '/collector/domainTable/list'
+                }" 
+                ui-columns-attr="domainTableColumns" 
+                ui-btn-add-click="doDomainTableAdd();" 
+                ui-btn-edit-click="doDomainTableEdit();" 
+                ui-btn-remove-click="doDomainTableRemove();" 
+                class="table table-striped table-bordered m-b-none">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="domainTable_add.html">
+        <div ng-include="'src/html/domainTable/domainTable_add.html'"></div>
+    </script>
+    <script type="text/ng-template" id="domainTable_edit.html">
+        <div ng-include="'src/html/domainTable/domainTable_edit.html'"></div>
+    </script>
+</div>

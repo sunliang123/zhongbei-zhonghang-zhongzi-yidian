@@ -1,0 +1,29 @@
+<div class="wrapper-md" ng-controller="stockOptionCycleAdminController">
+    <!-- toaster directive -->
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <!-- / toaster directive -->
+    <div class="panel panel-default mb0">
+        <div class="table-responsive">
+            <table id="stockOptionCycleAdminTable" 
+                ui-jq="dataTable" 
+                ui-options="{
+                    ajax: '/collector/stockOptionCycle/list'
+                }" 
+                ui-columns-attr="stockOptionCycleColumns" 
+                ui-btn-add-click="doStockOptionCycleAdd();" 
+                ui-btn-edit-click="doStockOptionCycleEdit();" 
+                ui-btn-remove-click="doStockOptionCycleRemove();" 
+                class="table table-striped table-bordered m-b-none">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="stockOptionCycle_add.html">
+        <div ng-include="'src/html/stockOptionCycle/stockOptionCycle_add.html'"></div>
+    </script>
+    <script type="text/ng-template" id="stockOptionCycle_edit.html">
+        <div ng-include="'src/html/stockOptionCycle/stockOptionCycle_edit.html'"></div>
+    </script>
+</div>

@@ -1,0 +1,82 @@
+<div class="modal-body wrapper-lg">
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="deferredRecordEditForm" class="form-horizontal form-validation">
+                <input type="hidden" ng-model="deferredRecord.id" />
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <strong>修改递延记录</strong>
+                    </div>
+                    <div class="panel-body pb0">
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">数据ID：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="deferredRecord.dataId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">应用域：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="deferredRecord.domain" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">费用：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="deferredRecord.fee" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">递延时间：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="deferredRecord.deferredTime" type="text" ng-pattern="/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/" placeholder="日期格式为：yyyy-MM-dd HH:mm:ss" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">策略类型ID：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="deferredRecord.strategyTypeId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">策略类型名称：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="deferredRecord.strategyTypeName" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">周期：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="deferredRecord.cycle" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">点买记录ID：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="deferredRecord.buyRecordId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">发布人ID：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="deferredRecord.publisherId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+                    </div>
+                    <footer class="panel-footer text-right">
+                        <button ng-click="requestDeferredRecordEdit(deferredRecordEditForm.$valid);" type="submit" class="btn btn-success">保存</button>
+                    </footer>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

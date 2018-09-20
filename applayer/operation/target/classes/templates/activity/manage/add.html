@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="decorator/layout">
+
+<body>
+<div class="content" layout:fragment="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="card card-wizard" id="wizardCard" style="width: 1200px;height: 850px;">
+					<div class="header">
+						<legend>添加活动</legend>
+					</div>
+					<form class="form-horizontal from-main" id="msgForm" action="javascript:void(0)">
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>主标题</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <input name="subject" type="text" class="form-control" placeholder="请输入主标题" maxlength="20"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>副标题</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <input name="subject2" type="text" class="form-control" placeholder="请输入副标题" maxlength="20"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>活动内容</p>
+                                </div>
+                                <div class="col-sm-4 columns-right" style="width: 700px;height: 300px;">
+                                    <textarea style="height: 170px;" id="container" name="content" placeholder="内容"></textarea>
+                                    <!--<script id="container" name="content" type="text/plain">-->
+                                    <!--</script>-->
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>活动链接</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <input name="href" type="text" class="form-control" placeholder="请输入活动链接" maxlength="30"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>展示位置</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <input name="location" type="text" class="form-control" placeholder="请输入展示位置" maxlength="30"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-1 columns-left">
+                                        <p>日期</p>
+                                    </div>
+                                    <div class="col-sm-4 columns-right">
+                                        <div class="col-md-5" style="width: 160px;">
+                                            <input type="text" class="form-control datetimepicker" maxlength="20"
+                                                   placeholder="开始日期" name="startTime"/>
+                                        </div>
+                                        <div class="col-md-5" style="width: 160px;">
+                                            <input type="text" class="form-control datetimepicker" maxlength="20"
+                                                   placeholder="结束日期" name="endTime"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>是否有效</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <select name="isvalid" class="selectpicker">
+                                        <option value="1">是</option>
+                                        <option value="0">否</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>活动类型</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <select name="activityType" class="selectpicker">
+                                        <option value="0">优股网</option>
+                                        <option value="1">合作方</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>活动资格</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <select name="qualification" class="selectpicker">
+                                        <option value="0">所有用户</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>奖品类型</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <select name="awardType" class="selectpicker show-tick form-control" multiple="multiple">
+                                        <option value="1">期权抵扣券</option>
+                                        <option value="2">话费券</option>
+                                        <option value="3">实物奖品</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+						<div class="row">
+                            <div class="col-md-1"></div>
+                        </div>
+						<div class="row edit-button">
+							<div class="col-md-5"></div>
+							<button id="submit" class="btn btn-info btn-fill">确认添加</button>
+						</div>
+                        
+                        <div class="clearfix"></div>
+                   </form>
+                </div>
+            </div>
+		</div>
+	</div>
+	<script th:src="@{/static/js/jquery.min.js}" type="text/javascript"></script>
+    <!-- 配置文件 -->
+    <script type="text/javascript" th:src="@{/static/ueditor/ueditor.config.js}"></script>
+    <script type="text/javascript" th:src="@{/static/ueditor/ueditor.all.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/ueditor/ueditor.parse.min.js}"></script>
+	<script type="text/javascript">
+        UE.getEditor('container');
+      $("#submit").on('click',function () {
+              $.ajax({
+                  url:'../activity/save',
+                  type:'post',
+                  data:$("#msgForm").serialize(),
+                  success:function (response) {
+                      if(response.code != '200'){
+                          swal({
+                              text : '添加失败',
+                              type : 'error'
+                          },function(){
+                              setTimeout(function(){
+                                  $(location).prop('href',"../activity/index");
+                              },500);
+                          });
+                      }else {
+                          swal({
+                              text : '添加成功',
+                              type : 'success'
+                          },function(){
+                              setTimeout(function(){
+                                  $(location).prop('href',"../activity/index");
+                              },500);
+                          });
+                      }
+                  }
+              })
+  	  });
+	</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<div class="wrapper-md" ng-controller="capitalFlowAdminController">
+    <!-- toaster directive -->
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <!-- / toaster directive -->
+    <div class="panel panel-default mb0">
+        <div class="table-responsive">
+            <table id="capitalFlowAdminTable" 
+                ui-jq="dataTable" 
+                ui-options="{
+                    ajax: '/collector/capitalFlow/list'
+                }" 
+                ui-columns-attr="capitalFlowColumns" 
+                ui-btn-add-click="doCapitalFlowAdd();" 
+                ui-btn-edit-click="doCapitalFlowEdit();" 
+                ui-btn-remove-click="doCapitalFlowRemove();" 
+                class="table table-striped table-bordered m-b-none">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="capitalFlow_add.html">
+        <div ng-include="'src/html/capitalFlow/capitalFlow_add.html'"></div>
+    </script>
+    <script type="text/ng-template" id="capitalFlow_edit.html">
+        <div ng-include="'src/html/capitalFlow/capitalFlow_edit.html'"></div>
+    </script>
+</div>

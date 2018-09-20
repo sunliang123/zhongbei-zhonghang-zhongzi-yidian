@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="decorator/layout">
+
+<body>
+<div class="content" layout:fragment="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="card card-wizard" id="wizardCard">
+					<div class="header">
+						<legend>添加权限</legend>
+					</div>
+					<form class="form-horizontal from-main" id="msgForm" action="javascript:void(0)">
+                        <input type="hidden" name="id" th:value="${permission.id}" />
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>权限名称</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <input name="name" type="text" class="form-control" placeholder="权限名称" maxlength="30" th:value="${permission.name}"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>权限代码</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <input name="expression" type="text" class="form-control" placeholder="权限代码" maxlength="30" th:value="${permission.expression}"/>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>所属权限</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <select name="pid" class="selectpicker">
+                                        <option th:each="permission:${permissions}" th:value="${permission.id}" th:text="${permission.name}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+						<div class="row">
+                            <div class="col-md-1"></div>
+                        </div>
+						<div class="row edit-button">
+							<div class="col-md-5"></div>
+							<button id="submit" class="btn btn-info btn-fill">确认更新</button>
+						</div>
+                        
+                        <div class="clearfix"></div>
+                   </form>
+                </div>
+            </div>
+		</div>
+	</div>
+	<script th:src="@{/static/js/jquery.min.js}" type="text/javascript"></script>
+	<script type="text/javascript">
+      $("#submit").on('click',function () {
+  		$.ajax({
+  			url:'../modify',
+  			type:'post',
+  			data:$("#msgForm").serialize(),
+  			success:function (response) {
+  				if(response.code != '200'){
+  					console.log("------服务器出错-------");
+					return false;	
+  				}
+  				if(response.result!=null) {
+                    swal({
+                        text : '更新成功',
+                        type : 'success'
+                    },function(){
+                        setTimeout(function(){
+                            $(location).prop('href',"../index");
+                        },500);
+                    });
+                }else{
+  				    swal("更新失败")
+                }
+  			}
+  		})
+  	  });	
+	</script>
+</div>
+</body>
+</html>

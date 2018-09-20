@@ -1,0 +1,28 @@
+server:
+  port: 8080
+management:
+  port: 3030
+  context-path: /trubine
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+hystrix:
+  threadpool:
+    default:
+      coreSize: 10  #并发执行的最大线程数，默认10
+  command:
+    paas-file:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 36000
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 8000  #命令执行超时时间，默认1000ms
+        timeout:
+          enabled: false
+feign:
+  hystrix:
+    enabled: false

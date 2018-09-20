@@ -1,0 +1,18 @@
+﻿[
+	{
+		id: 1,
+		desc: '今日',
+		tradeCount: 520,
+		tradeAmount: 6034540.52,
+		withholdCount: 365,
+		withholdAmount: 4582488.87
+	},
+	{
+		id: 2,
+		desc: '昨日',
+		tradeCount: 420,
+		tradeAmount: 254540.52,
+		withholdCount: 279,
+		withholdAmount: 852488.87
+	}
+]

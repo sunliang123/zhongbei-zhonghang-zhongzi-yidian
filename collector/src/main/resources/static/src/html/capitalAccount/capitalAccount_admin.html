@@ -1,0 +1,29 @@
+<div class="wrapper-md" ng-controller="capitalAccountAdminController">
+    <!-- toaster directive -->
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <!-- / toaster directive -->
+    <div class="panel panel-default mb0">
+        <div class="table-responsive">
+            <table id="capitalAccountAdminTable" 
+                ui-jq="dataTable" 
+                ui-options="{
+                    ajax: '/collector/capitalAccount/list'
+                }" 
+                ui-columns-attr="capitalAccountColumns" 
+                ui-btn-add-click="doCapitalAccountAdd();" 
+                ui-btn-edit-click="doCapitalAccountEdit();" 
+                ui-btn-remove-click="doCapitalAccountRemove();" 
+                class="table table-striped table-bordered m-b-none">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="capitalAccount_add.html">
+        <div ng-include="'src/html/capitalAccount/capitalAccount_add.html'"></div>
+    </script>
+    <script type="text/ng-template" id="capitalAccount_edit.html">
+        <div ng-include="'src/html/capitalAccount/capitalAccount_edit.html'"></div>
+    </script>
+</div>

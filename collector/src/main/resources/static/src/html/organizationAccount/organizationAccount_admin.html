@@ -1,0 +1,29 @@
+<div class="wrapper-md" ng-controller="organizationAccountAdminController">
+    <!-- toaster directive -->
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <!-- / toaster directive -->
+    <div class="panel panel-default mb0">
+        <div class="table-responsive">
+            <table id="organizationAccountAdminTable" 
+                ui-jq="dataTable" 
+                ui-options="{
+                    ajax: '/collector/organizationAccount/list'
+                }" 
+                ui-columns-attr="organizationAccountColumns" 
+                ui-btn-add-click="doOrganizationAccountAdd();" 
+                ui-btn-edit-click="doOrganizationAccountEdit();" 
+                ui-btn-remove-click="doOrganizationAccountRemove();" 
+                class="table table-striped table-bordered m-b-none">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="organizationAccount_add.html">
+        <div ng-include="'src/html/organizationAccount/organizationAccount_add.html'"></div>
+    </script>
+    <script type="text/ng-template" id="organizationAccount_edit.html">
+        <div ng-include="'src/html/organizationAccount/organizationAccount_edit.html'"></div>
+    </script>
+</div>

@@ -1,0 +1,25 @@
+server:
+  port: 8002
+management:
+  port: 3002
+  context-path: /trubine
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL5Dialect
+          connection:
+            autocommit: true
+ribbon:
+  OkToRetryOnAllOperations: false
+  ReadTimeout: 30000
+  ConnectTimeout: 30000

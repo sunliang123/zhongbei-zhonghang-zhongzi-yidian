@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>渠道推广系统</title>
+<link rel="stylesheet" href="../../js/layui/css/layui.css">
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+.layui-table input {
+	display: inline;
+	width: 90%;
+}
+.layui-tab-content {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+</style>
+</head>
+<body class="layui-layout-body" style="padding-top: 10px;padding-left: 20px;padding-right: 20px;">
+	<div class="layui-tab">
+		<ul class="layui-tab-title" id="tab-title">
+			<li class="layui-this">期权权利金加价比例</li>
+		</ul>
+		<div class="layui-tab-content" id="tab-content">
+			<div class="layui-tab-item layui-show">
+				<form id="stockoption-config-form">
+					<table class="layui-table" id="stockoption-config-table">
+						<colgroup>
+							<col>
+							<col>
+							<col>
+						</colgroup>
+						<thead>
+							<tr>
+								<th>期权周期</th>
+								<th>权利金加价比例</th>
+							</tr>
+						</thead>
+						<tbody id="stockoption-config-tbody"></tbody>
+					</table>
+				</form>
+				<div class="btn-list align-center">
+					<button type="button" id="stockoption-submit-btn" class="layui-btn mb5 mr20">提　交</button>
+					<button type="button" id="stockoption-cancel-btn" class="layui-btn layui-btn-primary mb5">取　消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../../js/layui/layui.js"></script>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="markup-config.js"></script>
+</body>
+</html>

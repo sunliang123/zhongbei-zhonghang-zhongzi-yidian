@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.waben.stock</groupId>
+		<artifactId>datalayer</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>organization</artifactId>
+	<packaging>jar</packaging>
+
+	<name>organization</name>
+	<description>机构</description>
+
+	<properties>
+		<springfox.version>2.6.1</springfox.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${springfox.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${springfox.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			
+		</plugins>
+		<finalName>organization</finalName>
+	</build>
+
+
+</project>

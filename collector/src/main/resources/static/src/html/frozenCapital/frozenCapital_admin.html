@@ -1,0 +1,29 @@
+<div class="wrapper-md" ng-controller="frozenCapitalAdminController">
+    <!-- toaster directive -->
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <!-- / toaster directive -->
+    <div class="panel panel-default mb0">
+        <div class="table-responsive">
+            <table id="frozenCapitalAdminTable" 
+                ui-jq="dataTable" 
+                ui-options="{
+                    ajax: '/collector/frozenCapital/list'
+                }" 
+                ui-columns-attr="frozenCapitalColumns" 
+                ui-btn-add-click="doFrozenCapitalAdd();" 
+                ui-btn-edit-click="doFrozenCapitalEdit();" 
+                ui-btn-remove-click="doFrozenCapitalRemove();" 
+                class="table table-striped table-bordered m-b-none">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="frozenCapital_add.html">
+        <div ng-include="'src/html/frozenCapital/frozenCapital_add.html'"></div>
+    </script>
+    <script type="text/ng-template" id="frozenCapital_edit.html">
+        <div ng-include="'src/html/frozenCapital/frozenCapital_edit.html'"></div>
+    </script>
+</div>

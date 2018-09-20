@@ -1,0 +1,8 @@
+server:
+  port: 8884
+management:
+  port: 3334
+  context-path: /turbine
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true

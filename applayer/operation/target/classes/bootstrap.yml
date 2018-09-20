@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: operation
+  profiles:
+    active: dev
+  cloud:
+      loadbalancer:
+        retry:
+          enabled: true
+      config:
+        discovery:
+          enabled: true
+          service-id: 'config'
+        fail-fast: true
+        label: master
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discoverymaster:8882/eureka
+  instance:
+    metadata-map:
+      cluster: finance
+      management:
+        port: ${management.port}
+        context-path: ${management.context-path}
+      health:
+        path: ${management.context-path}/health
+    status-page-url-path: ${management.context-path}/info
+    health-check-url-path: ${management.context-path}/health
+    prefer-ip-address: false
+ribbon:
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 3
+  OkToRetryOnAllOperations: true
+  ConnectTimeout: 1500
+  ReadTimeout: 2000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000

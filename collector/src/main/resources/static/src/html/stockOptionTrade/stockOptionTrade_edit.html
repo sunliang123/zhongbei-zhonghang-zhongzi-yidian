@@ -1,0 +1,215 @@
+<div class="modal-body wrapper-lg">
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="stockOptionTradeEditForm" class="form-horizontal form-validation">
+                <input type="hidden" ng-model="stockOptionTrade.id" />
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <strong>修改用户股票期权交易信息</strong>
+                    </div>
+                    <div class="panel-body pb0">
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">数据id：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.dataId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">应用域：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.domain" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">交易单号：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.tradeNo" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">交易状态：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.state" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">股票代码：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.stockCode" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">股票名称：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.stockName" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">名义本金：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.nominalAmount" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">权利金比例：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.rightMoneyRatio" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">权利金：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.rightMoney" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">周期ID：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.cycleId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">周期：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.cycle" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">周期月数：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.cycleMonth" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">周期名称：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.cycleName" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">到期时间：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.expireTime" type="text" ng-pattern="/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/" placeholder="日期格式为：yyyy-MM-dd HH:mm:ss" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">申购时间：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.applyTime" type="text" ng-pattern="/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/" placeholder="日期格式为：yyyy-MM-dd HH:mm:ss" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">买入方式：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.buyingType" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">成交时间：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.buyingTime" type="text" ng-pattern="/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/" placeholder="日期格式为：yyyy-MM-dd HH:mm:ss" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">成交价格：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.buyingPrice" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">卖出时间：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.sellingTime" type="text" ng-pattern="/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/" placeholder="日期格式为：yyyy-MM-dd HH:mm:ss" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">卖出价格：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.sellingPrice" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">行权时间：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.rightTime" type="text" ng-pattern="/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/" placeholder="日期格式为：yyyy-MM-dd HH:mm:ss" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">盈利：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.profit" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">发布人ID：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.publisherId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">发布人手机号码：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.publisherPhone" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">更新时间：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.updateTime" type="text" ng-pattern="/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/" placeholder="日期格式为：yyyy-MM-dd HH:mm:ss" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">对应的线下期权交易信息：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.offlineTrade" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">线下期权交易状态：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.status" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">数据id：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionTrade.dataId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+                    </div>
+                    <footer class="panel-footer text-right">
+                        <button ng-click="requestStockOptionTradeEdit(stockOptionTradeEditForm.$valid);" type="submit" class="btn btn-success">保存</button>
+                    </footer>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

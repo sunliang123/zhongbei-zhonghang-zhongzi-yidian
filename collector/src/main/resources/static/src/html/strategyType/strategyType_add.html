@@ -1,0 +1,82 @@
+<div class="modal-body wrapper-lg">
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="strategyTypeAddForm" class="form-horizontal form-validation">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <strong>添加策略类型</strong>
+                    </div>
+                    <div class="panel-body pb0">
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">数据id：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="strategyType.dataId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">应用域：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="strategyType.domain" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">名称：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="strategyType.name" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">状态：</label>
+	                            <div class="col-sm-9">
+	                            	<input ng-model="strategyType.state" type="radio" ng-value="true">是&nbsp;&nbsp;
+									<input ng-model="strategyType.state" type="radio" ng-value="false" ng-checked="1">否
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">每万元收取的服务费用：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="strategyType.serviceFeePerWan" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">穿仓点：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="strategyType.wearingPoint" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">止盈点：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="strategyType.profit" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">递延费：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="strategyType.deferred" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">周期：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="strategyType.cycle" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+                    </div>
+                    <footer class="panel-footer text-right">
+                        <button ng-click="requestStrategyTypeAdd(strategyTypeAddForm.$valid);" type="submit" class="btn btn-success">保存</button>
+                    </footer>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

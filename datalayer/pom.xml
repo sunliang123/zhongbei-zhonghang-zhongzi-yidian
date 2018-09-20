@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>finance</artifactId>
+        <groupId>com.waben.stock</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>datalayer</artifactId>
+    <packaging>pom</packaging>
+    <name>datalayer</name>
+    <description>网贝金融数据访问层</description>
+
+    <modules>
+        <module>publisher</module><!--8001-->
+        <module>investors</module><!--8002-->
+        <!-- <module>strategy</module> --><!--8003-->
+        <module>manage</module><!--8004-->
+        <module>stockcontent</module><!--8005-->
+        <!-- <module>financial</module> --><!--8006-->
+        <module>buyrecord</module><!--8007-->
+        <module>message</module><!--8008-->
+        <module>stockoption</module> <!--8009-->
+        <module>organization</module><!--8010-->
+        <module>activity</module><!--8011--> <!-- add by guowei 2018/4/10 -->
+    </modules>
+
+    <properties>
+        <filter>../../filters/filter-${active}.properties</filter>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.tomcat</groupId>
+                    <artifactId>tomcat-jdbc</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-hibernate5</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-core</artifactId>
+                </exclusion>
+            </exclusions>
+            <version>2.8.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.waben.stock</groupId>
+            <artifactId>interfaces</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+
+        </plugins>
+    </build>
+
+
+</project>

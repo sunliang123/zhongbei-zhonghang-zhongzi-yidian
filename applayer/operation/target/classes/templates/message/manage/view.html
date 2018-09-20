@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="decorator/layout">
+
+<body>
+<div class="content" layout:fragment="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="card card-wizard" id="wizardCard">
+					<div class="header">
+						<legend>消息详情</legend>
+					</div>
+					<form class="form-horizontal from-main">
+						<fieldset>
+							<div class="form-group">
+								<div class="col-sm-1"></div>
+								<div class="col-sm-1 columns-left">
+									<p>ID</p>
+								</div>
+								<div class="col-sm-4 columns-right">
+									<p id="messagingId" class="form-control-static" th:text="${messaging.id}"></p>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-1 columns-left">
+									<p>标题</p>
+								</div>
+								<div class="col-sm-4 columns-right">
+									<p class="form-control-static" th:text="${messaging.title}"></p>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset>
+							<div class="form-group">
+								<div class="col-sm-1"></div>
+								<div class="col-sm-1 columns-left">
+									<p>发布时间</p>
+								</div>
+								<div class="col-sm-4 columns-right">
+									<p class="form-control-static" th:text="${#dates.format(messaging.createTime,'yyyy-MM-dd mm:HH:ss')}"></p>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-1 columns-left">
+									<p>类型</p>
+								</div>
+								<div class="col-sm-4 columns-right">
+									<p class="form-control-static" th:text="${messaging.type.type}"></p>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset>
+							<div class="form-group">
+								<div class="col-sm-1"></div>
+								<div class="col-sm-1 columns-left">
+									<p>内容</p>
+								</div>
+								<div class="col-sm-4 columns-right">
+									<p class="form-control-static" th:utext="${messaging.content}"></p>
+								</div>
+							</div>
+						</fieldset>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

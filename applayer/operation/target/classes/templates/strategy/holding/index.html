@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="decorator/layout">
+
+<body>
+<div class="content" layout:fragment="content">
+    <div class="card">
+        <div class="content">
+            <div class="row">
+                <form class="form-horizontal">
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">发布人</label>
+                            <div class="col-md-8">
+                                <input type="text" name="publisherPhone" class="form-control" maxlength="11"
+                                       placeholder="发布人"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">股票名称</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="stockName" maxlength="11"
+                                       placeholder="股票名称"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">投资人</label>
+                            <div class="col-sm-8">
+                            	<select class="selectpicker" name="investorName" data-title="请选择投资人">
+                            		<option value="" selected="selected">请选择投资人</option>
+                            		<option th:each="investor,investorStart : ${investors}"
+											th:value="${investor.id}" th:text="${investor.userName}"></option>
+                            	</select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">买入时间</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control datetimepicker" name="beginTime" maxlength="11"
+                                       placeholder="开始时间"/>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control datetimepicker" name="endTime" maxlength="11"
+                                       placeholder="结束时间"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="form-group">
+                            <label class="col-md-5"></label>
+                            <input id="search" type="button" class="btn btn-fill btn-info" value="搜索"/>
+                        </div>
+                    </div>
+
+                    <div class="col-md-1">
+                        <div class="form-group">
+                            <label class="col-md-1"></label>
+                            <input id="reset" type="button" class="btn btn-fill btn-info" value="清空"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="toolbar">
+                    <!--        Here you can write extra buttons/actions for the toolbar              -->
+                </div>
+
+                <table id="bootstrap-table" class="table text-center">
+                    <thead>
+
+                    </thead>
+                </table>
+
+            </div>
+            <!--  end card  -->
+        </div>
+        <!-- end col-md-12 -->
+    </div>
+    <!-- end row -->
+    <script th:src="@{/static/js/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/static/js/bootstrap-table.js}" type="text/javascript"></script>
+    <script th:src="@{/static/js/bootstrap-table-zh-CN.js}" type="text/javascript"></script>
+    <script th:src="@{/static/js/http.js}" type="text/javascript"></script>
+    <script th:src="@{/static/js/sockjs.min.js}"></script>
+    <script th:src="@{/static/js/stomp.min.js}"></script>
+    <script type="text/javascript">
+        var $table = $('#bootstrap-table');
+        var stompClient = null;
+        var dataRows;
+        var dataMap = {};
+
+        function send(codes) {
+            console.log("开始发送消息")
+            stompClient.send("/publish", {}, JSON.stringify(codes));
+        }
+
+        function setConnected(connected) {
+            console.log("是否已经连接成功" + connected);
+            $table.bootstrapTable({
+                url: "../holding/pages",
+                dataType: "json",
+                cache: false, // 不缓存
+                striped: true, // 隔行加亮
+                pagination: true, // 开启分页功能
+                search: false, // 开启搜索功能
+                showColumns: true, // 开启自定义列显示功能
+                showRefresh: true, // 开启刷新功能
+                pageNumber: 1,
+                pageSize: 10, //每页的记录行数（*）
+                minimumCountColumns: 1, // 设置最少显示列个数
+                clickToSelect: true, // 单击行即可以选中
+                uniqueId: "id", //每一行的唯一标识，一般为主键列
+                sortName: 'id', // 设置默认排序为 name
+                sortOrder: 'asc', // 设置排序为反序 desc
+                pageList: [10, 15, 20, 25, 30],
+                sidePagination: "server",
+                queryParams: function () {
+                    var query = {
+                        page: this.pageNumber - 1,
+                        size: this.pageSize
+                    }
+                    var queryMap = {
+                        publisherPhone: $("input[name='publisherPhone']").val(),
+                        stockName: $("input[name='stockName']").val(),
+                        investorName: $("select[name='investorName']").val(),
+                        beginTime: $("input[name='beginTime']").val(),
+                        endTime: $("input[name='endTime']").val()
+                    }
+                    $.extend(query, queryMap);
+                    return query;
+                },
+                responseHandler: function (res) {
+                    if (res.code == '200') {
+                        return {
+                            total: res.result.totalElements,
+                            rows: res.result.content
+                        }
+                    }
+                },
+                columns: [{
+                    field: 'tradeNo',
+                    title: '交易号',
+                    align: 'center'
+                }, {
+                    field: 'publisherPhone',
+                    title: '发布人',
+                    align: 'center'
+                }, {
+                    field: 'stockName',
+                    title: '股票名称',
+                    align: 'center'
+                }, {
+                    field: 'stockCode',
+                    title: '股票代码',
+                    align: 'center'
+                }, {
+                    field: 'investorId',
+                    title: '投资人',
+                    align: 'center'
+                }, {
+                    field: 'buyingPrice',
+                    title: '买入金额',
+                    align: 'center'
+                }, {
+                    field: 'numberOfStrand',
+                    title: '数量',
+                    align: 'center'
+                }, {
+                    field: 'currentAmount',
+                    title: '当前价位',
+                    align: 'center'
+                }, {
+                    field: 'entrustPrice',
+                    title: '委托卖出价格',
+                    align: 'center'
+                }, {
+                    field: 'profitPosition',
+                    title: '止盈点位',
+                    align: 'center'
+                }, {
+                    field: 'lossPosition',
+                    title: '止损点位',
+                    align: 'center'
+                }, {
+                    field: 'profitPointPercent',
+                    title: '止盈点',
+                    align: 'center'
+                }, {
+                    field: 'lossPointPercent',
+                    title: '止损点',
+                    align: 'center'
+                }, {
+                    field: 'profitWarnPosition',
+                    title: '止盈警戒点',
+                    align: 'center'
+                }, {
+                    field: 'lossWarnPosition',
+                    title: '止损警戒点',
+                    align: 'center'
+                },{
+                    field: 'updateTime',
+                    title: '更新时间',
+                    align: 'center'
+                }, {
+                    field: 'buyRecordState',
+                    title: '策略状态',
+                    align: 'center'
+                }, {
+                    field: 'deferredStatus',
+                    title: '是否递延',
+                    align: 'center'
+                }, {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function operateFormatter(value, row, index) {
+                        return [
+                            /* '<a rel="tooltip" title="查看" class="btn btn-simple btn-info btn-icon table-action view" href="javascript:void(0)">',
+                            '<i class="fa fa-eye"></i>',
+                            '</a>', */
+                            '<a rel="tooltip" title="卖出" class="btn btn-simple btn-warning btn-icon table-action edit" href="javascript:void(0)">',
+                            '<i class="fa fa-dollar"></i>',
+                            '</a>',
+                        ].join('');
+                    },
+                    events: {
+                        'click .view': function (e, value, row, index) {
+                            swal('You click view icon, row: ', row);
+                        },
+                        'click .edit': function (e, value, row, index) {
+                            if(row.buyRecordState=='卖出锁定'){
+                                swal("警告", "当前状态不支持卖出", "warning");
+                                return false;
+                            }
+                            swal({
+                                title: "卖出!",
+                                text: "确认卖出当前股票信息?",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonText: "是的, 卖出!",
+                                cancelButtonText: "不了, 取消!",
+                                closeOnConfirm: false,
+                                closeOnCancel: false
+                            }, function (isConfirm) {
+                                if (isConfirm) {
+                                    post("../../investor/buyrecord/" + row.id + "/sellout", {entrustPrice: row.entrustPrice}, function (data) {
+                                        if (data.code == '200') {
+                                            swal("Succsess!", "卖出成功.", "success");
+                                            //当前一行禁用
+                                            $table.bootstrapTable('updateCell', {
+                                                rowIndex: index,
+                                                fieldName: 'buyRecordState',
+                                                fieldValue: '卖出锁定'
+                                            });
+                                        } else {
+                                            swal("Failed", "卖出失败", "error");
+                                        }
+                                    }, true);
+
+                                } else {
+                                    swal("Cancelled", "取消卖出 :)", "error");
+                                }
+                            });
+                        }
+                    }
+                }],
+                onLoadSuccess: function (data) {  //加载成功时执行
+                    dataRows = data.rows;
+                    var arrayCode = new Array();
+                    for (var index in dataRows) {
+                        var stock = new Object();
+                        var record = dataRows[index];
+                        var code = record.stockCode;
+                        var time = record.createTime;
+                        stock.code = code;
+                        stock.time = time;
+                        arrayCode.push(stock);
+                        dataMap[code + ":" + index] = index;
+                    }
+                    if (arrayCode.length > 0) {
+                        send(arrayCode);
+                    }
+                },
+                onLoadError: function (status) {
+                    if (status == 403) {
+                        window.location.href = "../login";
+                        disconnect();
+                    }
+                },
+            });
+        }
+
+        function connect() {
+            var socket = new SockJS("/operation/websocket");
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function (frame) {
+                setConnected(true);
+                var subcribe = "/quotation/investor/callback";
+                stompClient.subscribe(subcribe, function (response) {
+                    var result = JSON.parse(response.body);
+                    handlerSubscribe(result);
+                })
+            })
+
+            stompClient.onclose = function (event) {
+                setConnected(false);
+                console.log("ws已关闭");
+            }
+        }
+
+        function handlerSubscribe(result) {
+            for (var index in result) {
+                var stock = result[index].code;
+                var row = stock + ":" + index;
+                if (dataMap[row]) {
+                    $table.bootstrapTable('updateCell', {
+                        rowIndex: dataMap[row],
+                        fieldName: 'currentAmount',
+                        fieldValue: result[index].price
+                    });
+                    $table.bootstrapTable('updateCell', {
+                        rowIndex: dataMap[row],
+                        fieldName: 'entrustPrice',
+                        fieldValue: result[index].entrustPrice
+                    });
+                }
+            }
+        }
+
+        function disconnect() {
+            stompClient.close();
+        }
+
+        $(function () {
+            connect()
+
+            //activate the tooltips after the data table is initialized
+            $('[rel="tooltip"]').tooltip();
+
+            $(window).resize(function () {
+                $table.bootstrapTable('resetView');
+            });
+        });
+        
+        $('#search').click(function(){
+     	   var beginTime = $("input[name='beginTime']");
+     	   var endTime = $("input[name='endTime']");
+     	   //<![CDATA[ 
+     	   if(beginTime.val() != '' && endTime.val() == ''){
+     		   swal("","请输入结束时间", "error");
+     		   return false;
+     	   }
+     	   if(endTime.val() != '' && beginTime.val() == ''){
+     		   swal("","请输入开始时间", "error");
+     		   return false;
+     	   }
+     	 	//]]>
+     	   $table.bootstrapTable('getOptions').pageNumber = 1;
+     	   $table.bootstrapTable('refresh');
+        });
+        
+        $('#reset').click(function(){
+        	$("input[name='publisherPhone']").val('');
+        	$("input[name='stockName']").val('');
+        	$("span[class='filter-option pull-left']").text('请选择投资人');
+        	$("select[name='investorName']").val('');
+        	$("input[name='beginTime']").val('');
+        	$("input[name='endTime']").val('');
+        	$table.bootstrapTable('getOptions').pageNumber = 1;
+        	$table.bootstrapTable('refresh');
+        });
+
+    </script>
+</div>
+</body>
+</html>

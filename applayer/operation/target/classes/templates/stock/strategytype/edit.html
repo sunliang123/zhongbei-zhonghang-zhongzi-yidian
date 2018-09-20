@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="decorator/layout">
+
+<body>
+<div class="content" layout:fragment="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="card card-wizard" id="wizardCard">
+					<div class="header">
+						<legend>编辑更新</legend>
+					</div>
+					<form class="form-horizontal from-main" id="msgForm" action="javascript:void(0)">
+						<input type="hidden" name="id" th:value="${strategyType.id}" />
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>策略名称</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <input name="name" type="text" class="form-control" placeholder="" th:value="${strategyType.name}" maxlength="11"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>服务费/万元</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <input name="serviceFeePerWan" type="text" class="form-control" placeholder="" th:value="${strategyType.serviceFeePerWan}" maxlength="11"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>穿仓点</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <input name="wearingPoint" type="text" class="form-control" placeholder="" th:value="${strategyType.wearingPoint}" maxlength="11"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>止盈点</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <input name="profit" type="text" class="form-control" placeholder="" th:value="${strategyType.profit}" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>递延费</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <input name="deferred" type="text" class="form-control" placeholder="" th:value="${strategyType.deferred}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>周期</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <input name="cycle" type="text" class="form-control" placeholder="" th:value="${strategyType.cycle}" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>状态</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <select name="state" class="selectpicker">
+                                        <option value="0" th:if="${strategyType.state eq false}" th:selected="selected" >异常</option>
+                                        <option value="1" th:if="${strategyType.state eq true}" th:selected="selected" >正常</option>
+                                        <option value="0" th:if="${strategyType.state eq true}" >异常</option>
+                                        <option value="1" th:if="${strategyType.state eq false}" >正常</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>止损点</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <select name="loss" class="selectpicker show-tick form-control" multiple="multiple">
+                                        <option th:each="loss:${lossVos}" th:value="${loss.id}" th:text="${loss.point}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+						<div class="row">
+                            <div class="col-md-1"></div>
+                        </div>
+						<div class="row edit-button">
+							<div class="col-md-5"></div>
+							<button id="submit" class="btn btn-info btn-fill">更新</button>
+						</div>
+                        
+                        <div class="clearfix"></div>
+                   </form>
+                </div>
+            </div>
+		</div>
+	</div>
+	<script th:src="@{/static/js/jquery.min.js}" type="text/javascript"></script>
+	<script type="text/javascript">
+      $("#submit").on('click',function () {
+          $.ajax({
+              url:'../modify',
+              type:'post',
+              data:$("#msgForm").serialize(),
+              success:function (response) {
+                  if(response.code != '200'){
+                      console.log("------服务器出错-------");
+                      return false;
+                  }
+                  var data = response.result;
+                  var id = $("input[name='id']").val();
+                  if(data.id == id){
+                      swal({
+                          text : '更新成功',
+                          type : 'success'
+                      },function(){
+                          setTimeout(function(){
+                              $(location).prop('href',"../index");
+                          },500);
+                      });
+                  }
+              }
+          })
+      });
+	</script>
+</div>
+</body>
+</html>

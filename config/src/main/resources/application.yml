@@ -1,0 +1,7 @@
+server:
+  port: 8881
+management:
+  port: 3331
+  context-path: /config
+logging:
+  config: classpath:log/logback.xml

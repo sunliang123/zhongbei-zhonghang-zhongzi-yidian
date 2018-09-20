@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/static/js/layui/css/layui.css}" />
+<style>
+.container {
+	padding: 30px;
+}
+.text-box {
+	background-color: #f2f4f5;
+	height: 40px;
+	line-height: 40px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<span>推流地址</span>
+		<p class="text-box" id="pushUrl"></p>
+		<span>拉流地址(HTTP)</span>
+		<p class="text-box" id="pullHttp"></p>
+		<span>拉流地址(HLS)</span>
+		<p class="text-box" id="pullHls"></p>
+		<span>拉流地址(RTMP)</span>
+		<p class="text-box" id="pullRtmp"></p>
+	</div>
+	<script th:src="@{/static/js/jquery.min.js}" type="text/javascript"></script>
+	<script th:src="@{/static/js/layui/layui.js}" type="text/javascript"></script>
+	<script type="text/javascript">
+	/*<![CDATA[*/
+	$(function() {
+		var cid = parent.currentCid;
+		$.ajax({
+            type: "GET",
+            url: "../liveplayer/address/" + cid,
+            dataType: "json",
+            success: function (jsonResult) {
+            	if("200" == jsonResult.code) {
+            		$("#pushUrl").html(jsonResult.result.pushUrl);
+            		$("#pullHttp").html(jsonResult.result.httpPullUrl);
+            		$("#pullHls").html(jsonResult.result.hlsPullUrl);
+            		$("#pullRtmp").html(jsonResult.result.rtmpPullUrl);
+            	} else {
+            		parent.layer.msg(jsonResult.message);
+            	}
+            }
+        });
+	});
+	/*]]>*/
+	</script>
+</body>
+</html>

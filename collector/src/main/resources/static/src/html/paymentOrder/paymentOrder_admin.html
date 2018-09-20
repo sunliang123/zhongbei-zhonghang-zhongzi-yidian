@@ -1,0 +1,29 @@
+<div class="wrapper-md" ng-controller="paymentOrderAdminController">
+    <!-- toaster directive -->
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <!-- / toaster directive -->
+    <div class="panel panel-default mb0">
+        <div class="table-responsive">
+            <table id="paymentOrderAdminTable" 
+                ui-jq="dataTable" 
+                ui-options="{
+                    ajax: '/collector/paymentOrder/list'
+                }" 
+                ui-columns-attr="paymentOrderColumns" 
+                ui-btn-add-click="doPaymentOrderAdd();" 
+                ui-btn-edit-click="doPaymentOrderEdit();" 
+                ui-btn-remove-click="doPaymentOrderRemove();" 
+                class="table table-striped table-bordered m-b-none">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="paymentOrder_add.html">
+        <div ng-include="'src/html/paymentOrder/paymentOrder_add.html'"></div>
+    </script>
+    <script type="text/ng-template" id="paymentOrder_edit.html">
+        <div ng-include="'src/html/paymentOrder/paymentOrder_edit.html'"></div>
+    </script>
+</div>

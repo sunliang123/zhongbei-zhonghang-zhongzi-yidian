@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>渠道推广系统</title>
+<link rel="stylesheet" href="../../js/layui/css/layui.css">
+<link rel="stylesheet" href="../../css/common.css">
+<style type="text/css">
+.detail, .bindcard, .admin {
+	line-height: 50px;
+	margin-top: 20px;
+}
+.bindcard {
+	padding-left: 150px;
+}
+.admin {
+	padding-left: 140px;
+}
+.fielddiv {
+	padding-left: 10%;
+}
+.fieldtext {
+	color: #1f9ed7;
+	width: 100px;
+	display: inline-block;
+	text-align: right;
+}
+#name-modify-link {
+	color: #1f9ed7;
+	margin-left: 5px;
+}
+</style>
+</head>
+<body class="layui-layout-body" style="padding-top: 10px;padding-left: 20px;padding-right: 20px;">
+	<div class="layui-tab">
+		<ul class="layui-tab-title" id="org-detail-tab">
+			<li class="layui-this">机构信息</li>
+			<li>绑定银行卡</li>
+			<li>机构管理员</li>
+		</ul>
+		<div class="layui-tab-content">
+			<div class="layui-tab-item layui-show detail">
+				<div class="layui-row">
+					<div class="layui-col-xs6 fielddiv">
+						<span class="fieldtext">机构ID：</span>
+						<span class="fieldvalue" data="id"></span>
+					</div>
+					<div class="layui-col-xs6">
+						<span class="fieldtext">机构代码：</span>
+						<span class="fieldvalue" data="code"></span>
+					</div>
+				</div>
+				<form id="name-modify-form">
+				<div class="layui-row">
+					<div class="layui-col-xs6 fielddiv">
+						<span class="fieldtext">机构名称：</span>
+						<span id="name-display">
+							<span class="fieldvalue" data="name"></span>
+							<a href="javascript:;" id="name-modify-link">修改</a>
+						</span>
+						<span id="name-modify" style="display: none;">
+							<input type="hidden" name="id" value="" data="id">
+							<input style="display: inline;width: 150px;" data="name" type="text" name="name" placeholder="请输入机构名称" value="" class="layui-input">
+							<button type="button" id="name-modify-btn" class="layui-btn mb5">修　改</button>
+						</span>
+					</div>
+					<div class="layui-col-xs6">
+						<span class="fieldtext">机构层级：</span>
+						<span class="fieldvalue" data="level"></span>级机构
+					</div>
+				</div>
+				</form>
+				<div class="layui-row">
+					<div class="layui-col-xs6 fielddiv">
+						<span class="fieldtext">下级机构数量：</span>
+						<span class="fieldvalue" data="childOrgCount"></span>
+					</div>
+					<div class="layui-col-xs6">
+						<span class="fieldtext">总推广用户数：</span>
+						<span class="fieldvalue" data="publisherCount"></span>
+					</div>
+				</div>
+				<div class="layui-row">
+					<div class="layui-col-xs6 fielddiv">
+						<span class="fieldtext">上级机构代码：</span>
+						<span class="fieldvalue" data="parentCode"></span>
+					</div>
+					<div class="layui-col-xs6">
+						<span class="fieldtext">上级机构名称：</span>
+						<span class="fieldvalue" data="parentName"></span>
+					</div>
+				</div>
+			</div>
+			<div class="layui-tab-item bindcard">
+				<form class="layui-form" action="" id="bind-card-form">
+					<div class="layui-form-item">
+						<label class="layui-form-label width90">姓名</label>
+						<div class="layui-input-inline width300">
+							<input type="text" data="name" name="name" placeholder="请输入姓名" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label width90">身份证号</label>
+						<div class="layui-input-inline width300">
+							<input type="text" data="idCard" name="idCard" placeholder="请输入身份证号" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label width90">银行卡号</label>
+						<div class="layui-input-inline width300">
+							<input type="text" data="bankCard" name="bankCard" placeholder="请输入银行卡号" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label width90">手机号</label>
+						<div class="layui-input-inline width300">
+							<input type="text" data="phone" name="phone" placeholder="请输入手机号" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label width90"></label>
+						<button type="button" id="bind-card-submit-btn" class="layui-btn mb5">修　改</button>
+						<button type="button" id="bind-card-cancel-btn" class="layui-btn layui-btn-primary mb5">取　消</button>
+					</div>
+				</form>
+			</div>
+			<div class="layui-tab-item admin">
+				<input type="text" name="currentId" class="layui-input" style="display: none;">
+				<form class="layui-form" action="" id="add-form">
+					<input type="text" name="org.id" class="layui-input" style="display: none;">
+					<div class="layui-form-item">
+						<label class="layui-form-label width100">用户名</label>
+						<div class="layui-input-inline width300">
+							<input type="text" name="username" placeholder="请输入用户名(4-10个字符)" class="layui-input" maxlength="8">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label width100">登陆密码</label>
+						<div class="layui-input-inline width300">
+							<input type="password" name="password" placeholder="请输入密码" class="layui-input" maxlength="16">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label width100">请再次输入密码</label>
+						<div class="layui-input-inline width300">
+							<input type="password" name="again-password" placeholder="请输入密码" class="layui-input" maxlength="16">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label width100">昵称</label>
+						<div class="layui-input-inline width300">
+							<input type="text" name="nickname" placeholder="请输入用户昵称(4-10个字符)" class="layui-input" maxlength="8">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label width100"></label>
+						<button type="button" id="user-submit-btn" class="layui-btn mb5">提　交</button>
+						<button type="button" id="user-cancel-btn" class="layui-btn layui-btn-primary mb5">取　消</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="../../js/layui/layui.js"></script>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="org-detail.js"></script>
+</body>
+</html>

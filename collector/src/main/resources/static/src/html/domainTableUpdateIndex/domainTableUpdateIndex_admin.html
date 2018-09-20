@@ -1,0 +1,29 @@
+<div class="wrapper-md" ng-controller="domainTableUpdateIndexAdminController">
+    <!-- toaster directive -->
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <!-- / toaster directive -->
+    <div class="panel panel-default mb0">
+        <div class="table-responsive">
+            <table id="domainTableUpdateIndexAdminTable" 
+                ui-jq="dataTable" 
+                ui-options="{
+                    ajax: '/collector/domainTableUpdateIndex/list'
+                }" 
+                ui-columns-attr="domainTableUpdateIndexColumns" 
+                ui-btn-add-click="doDomainTableUpdateIndexAdd();" 
+                ui-btn-edit-click="doDomainTableUpdateIndexEdit();" 
+                ui-btn-remove-click="doDomainTableUpdateIndexRemove();" 
+                class="table table-striped table-bordered m-b-none">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="domainTableUpdateIndex_add.html">
+        <div ng-include="'src/html/domainTableUpdateIndex/domainTableUpdateIndex_add.html'"></div>
+    </script>
+    <script type="text/ng-template" id="domainTableUpdateIndex_edit.html">
+        <div ng-include="'src/html/domainTableUpdateIndex/domainTableUpdateIndex_edit.html'"></div>
+    </script>
+</div>

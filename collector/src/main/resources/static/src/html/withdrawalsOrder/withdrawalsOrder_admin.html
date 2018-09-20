@@ -1,0 +1,29 @@
+<div class="wrapper-md" ng-controller="withdrawalsOrderAdminController">
+    <!-- toaster directive -->
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <!-- / toaster directive -->
+    <div class="panel panel-default mb0">
+        <div class="table-responsive">
+            <table id="withdrawalsOrderAdminTable" 
+                ui-jq="dataTable" 
+                ui-options="{
+                    ajax: '/collector/withdrawalsOrder/list'
+                }" 
+                ui-columns-attr="withdrawalsOrderColumns" 
+                ui-btn-add-click="doWithdrawalsOrderAdd();" 
+                ui-btn-edit-click="doWithdrawalsOrderEdit();" 
+                ui-btn-remove-click="doWithdrawalsOrderRemove();" 
+                class="table table-striped table-bordered m-b-none">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="withdrawalsOrder_add.html">
+        <div ng-include="'src/html/withdrawalsOrder/withdrawalsOrder_add.html'"></div>
+    </script>
+    <script type="text/ng-template" id="withdrawalsOrder_edit.html">
+        <div ng-include="'src/html/withdrawalsOrder/withdrawalsOrder_edit.html'"></div>
+    </script>
+</div>

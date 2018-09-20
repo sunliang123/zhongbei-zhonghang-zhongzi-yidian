@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>渠道推广系统</title>
+<link rel="stylesheet" href="../../../js/layui/css/layui.css">
+<link rel="stylesheet" href="../../../css/common.css">
+</head>
+<body class="layui-layout-body" style="padding-top: 15px;">
+	<form class="layui-form" action="" id="add-form">
+		<div class="layui-form-item">
+			<label class="layui-form-label width100">用户名</label>
+			<div class="layui-input-inline width300">
+				<input type="text" name="username" placeholder="请输入用户名(4-10个字符)" class="layui-input" maxlength="10">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label width100">登陆密码</label>
+			<div class="layui-input-inline width300">
+				<input type="password" name="password" placeholder="请输入密码" class="layui-input" maxlength="16">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label width100">请再次输入密码</label>
+			<div class="layui-input-inline width300">
+				<input type="password" name="again-password" placeholder="请输入密码" class="layui-input" maxlength="16">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label width100">昵称</label>
+			<div class="layui-input-inline width300">
+				<input type="text" name="nickname" placeholder="请输入用户昵称(4-10个字符)" class="layui-input" maxlength="8">
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label width100"></label>
+			<button type="button" id="submit-btn" class="layui-btn mb5">提　交</button>
+			<button type="button" id="cancel-btn" class="layui-btn layui-btn-primary mb5">取　消</button>
+		</div>
+	</form>
+
+	<script src="../../../js/layui/layui.js"></script>
+	<script src="../../../js/jquery.min.js"></script>
+	<script src="user-add.js"></script>
+</body>
+</html>

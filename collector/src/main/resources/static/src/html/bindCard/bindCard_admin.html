@@ -1,0 +1,29 @@
+<div class="wrapper-md" ng-controller="bindCardAdminController">
+    <!-- toaster directive -->
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <!-- / toaster directive -->
+    <div class="panel panel-default mb0">
+        <div class="table-responsive">
+            <table id="bindCardAdminTable" 
+                ui-jq="dataTable" 
+                ui-options="{
+                    ajax: '/collector/bindCard/list'
+                }" 
+                ui-columns-attr="bindCardColumns" 
+                ui-btn-add-click="doBindCardAdd();" 
+                ui-btn-edit-click="doBindCardEdit();" 
+                ui-btn-remove-click="doBindCardRemove();" 
+                class="table table-striped table-bordered m-b-none">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="bindCard_add.html">
+        <div ng-include="'src/html/bindCard/bindCard_add.html'"></div>
+    </script>
+    <script type="text/ng-template" id="bindCard_edit.html">
+        <div ng-include="'src/html/bindCard/bindCard_edit.html'"></div>
+    </script>
+</div>

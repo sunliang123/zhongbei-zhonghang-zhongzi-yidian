@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorator/layout">
+	
+<body>
+	<div class="content" layout:fragment="content">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="header">
+						<legend>止损详情</legend>
+					</div>
+					<div class="content">
+						<form class="form-horizontal">
+							<fieldset>
+								<div class="form-group">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-1 columns-left">
+										<p>ID</p>
+									</div>
+									<div class="col-sm-4 columns-right">
+										<p class="form-control-static" th:text="${loss.id}"></p>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-1 columns-left">
+										<p>止损点</p>
+									</div>
+									<div class="col-sm-4 columns-right">
+										<p class="form-control-static" th:text="${loss.point}"></p>
+									</div>
+								</div>
+							</fieldset>
+							<!--<fieldset>
+								<div class="form-group">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-1 columns-left">
+										<p>穿仓点</p>
+									</div>
+									<div class="col-sm-4 columns-right">
+										<p class="form-control-static" th:text="${strategyType.wearingPoint}"></p>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-1 columns-left">
+										<p>止盈点</p>
+									</div>
+									<div class="col-sm-4 columns-right">
+										<p class="form-control-static" th:text="${strategyType.profit}"></p>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-1 columns-left">
+										<p>递延费</p>
+									</div>
+									<div class="col-sm-4 columns-right">
+										<p class="form-control-static" th:text="${strategyType.deferred}"></p>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-1 columns-left">
+										<p>周期</p>
+									</div>
+									<div class="col-sm-4 columns-right">
+										<p class="form-control-static" th:text="${strategyType.cycle}"></p>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-1 columns-left">
+										<p>状态</p>
+									</div>
+									<div class="col-sm-4 columns-right">
+										<p class="form-control-static" th:text="${strategyType.state}"></p>
+									</div>
+								</div>
+							</fieldset>-->
+							<div class="clearfix"></div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					
+					<div class="toolbar">
+						<!--        Here you can write extra buttons/actions for the toolbar              -->
+						<div class="header">
+							<legend>相关的策略信息</legend>
+						</div>
+					</div>
+
+					<table id="strategytype-bootstrap-table" class="table text-center">
+						<thead>
+
+						</thead>
+					</table>
+
+				</div>
+				<!--  end card  -->
+			</div>
+			<!-- end col-md-12 -->
+		</div>
+		<!-- end row -->
+
+
+		
+		<script th:src="@{/static/js/jquery.min.js}" type="text/javascript"></script>
+		<script th:src="@{/static/js/bootstrap-table.js}"
+			type="text/javascript"></script>
+		<script th:src="@{/static/js/bootstrap-table-zh-CN.js}"
+			type="text/javascript"></script>
+
+		<script type="text/javascript" th:inline="javascript">
+        var $strategytypeTable = $('#strategytype-bootstrap-table');
+        $(function () {
+            $strategytypeTable.bootstrapTable({
+                data: /*[[${loss.strategyTypes}]]*/,
+                dataType: "json",
+                cache: true, // 不缓存
+                striped: true, // 隔行加亮
+                pagination: true, // 开启分页功能
+                search: false, // 开启搜索功能
+                showColumns: true, // 开启自定义列显示功能
+                showRefresh: true, // 开启刷新功能
+                pageSize: 10, //每页的记录行数（*）
+                minimumCountColumns: 1, // 设置最少显示列个数
+                clickToSelect: true, // 单击行即可以选中
+                uniqueId: "id", //每一行的唯一标识，一般为主键列
+                sortName: 'id', // 设置默认排序为 name
+                sortOrder: 'asc', // 设置排序为反序 desc
+                pageList: [10, 15, 20, 25, 30],
+                columns: [{
+                    field: 'id',
+                    title: 'ID',
+                    align: 'center'
+                }, {
+                    field: 'name',
+                    title: '策略名称',
+                    align: 'center'
+                }, {
+                    field: 'serviceFeePerWan',
+                    title: '服务费/万元',
+                    align: 'center'
+                }, {
+                    field: 'wearingPoint',
+                    title: '穿仓点',
+                    align: 'center'
+                }, {
+                    field: 'profit',
+                    title: '止盈点',
+                    align: 'center'
+                }, {
+                    field: 'deferred',
+                    title: '递延费',
+                    align: 'center'
+                }, {
+                    field: 'cycle',
+                    title: '周期',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        return value + "天";
+                    }
+                }, {
+                    field: 'state',
+                    title: '状态',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        if (value == true) {
+                            return '正常';
+                        } else {
+                            return '异常';
+                        }
+                    }
+                }]
+            });
+        	
+
+
+            //activate the tooltips after the data table is initialized
+            $('[rel="tooltip"]').tooltip();
+
+            $(window).resize(function () {
+                $strategytypeTable.bootstrapTable('resetView');
+            });
+
+        });
+        
+    </script>
+	</div>
+</body>
+</html>

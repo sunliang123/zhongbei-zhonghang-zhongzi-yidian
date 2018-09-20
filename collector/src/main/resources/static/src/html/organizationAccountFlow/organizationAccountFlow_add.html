@@ -1,0 +1,102 @@
+<div class="modal-body wrapper-lg">
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="organizationAccountFlowAddForm" class="form-horizontal form-validation">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <strong>添加机构账户流水</strong>
+                    </div>
+                    <div class="panel-body pb0">
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">数据ID：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="organizationAccountFlow.dataId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">应用域：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="organizationAccountFlow.domain" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">流水号：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="organizationAccountFlow.flowNo" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">金额：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="organizationAccountFlow.amount" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">原始资金：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="organizationAccountFlow.originAmount" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">流水类型：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="organizationAccountFlow.type" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">备注：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="organizationAccountFlow.remark" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">产生时间：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="organizationAccountFlow.occurrenceTime" type="text" ng-pattern="/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/" placeholder="日期格式为：yyyy-MM-dd HH:mm:ss" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">对应的机构：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="organizationAccountFlow.orgId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">对应的资源类型：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="organizationAccountFlow.resourceType" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">对应的资源ID：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="organizationAccountFlow.resourceId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">对应的资源交易单号：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="organizationAccountFlow.resourceTradeNo" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+                    </div>
+                    <footer class="panel-footer text-right">
+                        <button ng-click="requestOrganizationAccountFlowAdd(organizationAccountFlowAddForm.$valid);" type="submit" class="btn btn-success">保存</button>
+                    </footer>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

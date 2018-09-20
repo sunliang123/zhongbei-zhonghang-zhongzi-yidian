@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/sockjs.js"></script>
+<script src="js/stomp.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script>    
+var s = new SockJS('/socket');    
+var stompClient = Stomp.over(s);    
+stompClient.connect({}, function () {
+	console.log('notice socket connected!');
+	stompClient.subscribe('/topic/stockMarketIndex', function (data) {            
+		// $('#content')[0].innerHTML += "---" + data.body + "---<br /><br />";        
+	});
+	
+	stompClient.subscribe('/user/000001/stockTimeLine', function (data) {            
+		$('#content')[0].innerHTML += "---" + data.body + "---<br /><br />";        
+	});
+	
+	// 监听断开连接
+	s.onclose = function(event){
+		console.log("a:" + event);
+	};
+});
+</script>
+</head>
+<body>
+	<p id="content"></p>
+</body>
+</html>

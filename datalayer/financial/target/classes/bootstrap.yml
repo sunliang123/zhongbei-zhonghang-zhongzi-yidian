@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: financial
+profiles:
+    active: dev
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+    config:
+      discovery:
+        enabled: true
+        service-id: 'config'
+      fail-fast: true
+      label: master
+eureka:
+  instance:
+    metadata-map:
+      cluster: finance
+      management:
+        port: ${management.port}
+        context-path: ${management.context-path}
+      health:
+        path: ${management.context-path}/health
+    status-page-url-path: ${management.context-path}/info
+    health-check-url-path: ${management.context-path}/health
+    prefer-ip-address: true
+    hostname: ${spring.cloud.client.ipAddress}
+  client:
+    service-url:
+      defaultZone: http://discoverymaster:8882/eureka/

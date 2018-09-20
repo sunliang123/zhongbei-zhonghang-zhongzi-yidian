@@ -1,0 +1,29 @@
+<div class="wrapper-md" ng-controller="publisherAdminController">
+    <!-- toaster directive -->
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <!-- / toaster directive -->
+    <div class="panel panel-default mb0">
+        <div class="table-responsive">
+            <table id="publisherAdminTable" 
+                ui-jq="dataTable" 
+                ui-options="{
+                    ajax: '/collector/publisher/list'
+                }" 
+                ui-columns-attr="publisherColumns" 
+                ui-btn-add-click="doPublisherAdd();" 
+                ui-btn-edit-click="doPublisherEdit();" 
+                ui-btn-remove-click="doPublisherRemove();" 
+                class="table table-striped table-bordered m-b-none">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="publisher_add.html">
+        <div ng-include="'src/html/publisher/publisher_add.html'"></div>
+    </script>
+    <script type="text/ng-template" id="publisher_edit.html">
+        <div ng-include="'src/html/publisher/publisher_edit.html'"></div>
+    </script>
+</div>

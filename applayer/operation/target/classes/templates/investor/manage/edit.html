@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="decorator/layout">
+
+<body>
+<div class="content" layout:fragment="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="card card-wizard" id="wizardCard">
+					<div class="header">
+						<legend>编辑更新</legend>
+					</div>
+					<form class="form-horizontal from-main" id="msgForm" action="javascript:void(0)">
+						<input type="hidden" name="id" th:value="${investor.id}" />
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>名称</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <input name="userName" type="text" class="form-control" placeholder="" th:value="${investor.userName}" maxlength="11"/>
+                                </div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1 columns-left">
+                                    <p>状态</p>
+                                </div>
+                                <div class="col-sm-4 columns-right">
+                                    <select name="state" >
+                                        <option value="0" th:if="${investor.state eq false}" th:selected="selected" >禁用</option>
+                                        <option value="1" th:if="${investor.state eq true}" th:selected="selected" >可用</option>
+                                        <option value="0" th:if="${investor.state eq true}" >禁用</option>
+                                        <option value="1" th:if="${investor.state eq false}" >可用</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+						<div class="row">
+                            <div class="col-md-1"></div>
+                        </div>
+						<div class="row edit-button">
+							<div class="col-md-5"></div>
+							<button id="submit" class="btn btn-info btn-fill">更新</button>
+						</div>
+                        
+                        <div class="clearfix"></div>
+                   </form>
+                </div>
+            </div>
+		</div>
+	</div>
+	<script th:src="@{/static/js/jquery.min.js}" type="text/javascript"></script>
+	<script type="text/javascript">
+      $("#submit").on('click',function () {
+  		$.ajax({
+  			url:'../modify',
+  			type:'post',
+  			data:$("#msgForm").serialize(),
+  			success:function (response) {
+  				if(response.code != '200'){
+  					console.log("------服务器出错-------");
+					return false;	
+  				}
+  				if(response.result==1) {
+                    swal({
+                        text : '更新成功',
+                        type : 'success'
+                    },function(){
+                        setTimeout(function(){
+                            $(location).prop('href',"../index");
+                        },500);
+                    });
+                }
+  			}
+  		})
+  	  });	
+	</script>
+</div>
+</body>
+</html>

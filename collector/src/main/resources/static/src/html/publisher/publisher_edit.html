@@ -1,0 +1,97 @@
+<div class="modal-body wrapper-lg">
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="publisherEditForm" class="form-horizontal form-validation">
+                <input type="hidden" ng-model="publisher.id" />
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <strong>修改策略发布人</strong>
+                    </div>
+                    <div class="panel-body pb0">
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">数据id：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="publisher.dataId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">应用域：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="publisher.domain" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">序列码：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="publisher.serialCode" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">电话：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="publisher.phone" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">密码：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="publisher.password" type="password"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">推广码：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="publisher.promotionCode" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">推广人：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="publisher.promoter" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">注册时间：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="publisher.createTime" type="text" ng-pattern="/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/" placeholder="日期格式为：yyyy-MM-dd HH:mm:ss" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">是否为测试用户，测试用户不能提现：</label>
+	                            <div class="col-sm-9">
+	                            	<input ng-model="publisher.isTest" type="radio" ng-value="true">是&nbsp;&nbsp;
+									<input ng-model="publisher.isTest" type="radio" ng-value="false">否
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">用户使用的终端类型，I表示IOS，A表示Android，PC表示PC，H5表示移动端：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="publisher.endType" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">头像：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="publisher.headPortrait" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+                    </div>
+                    <footer class="panel-footer text-right">
+                        <button ng-click="requestPublisherEdit(publisherEditForm.$valid);" type="submit" class="btn btn-success">保存</button>
+                    </footer>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

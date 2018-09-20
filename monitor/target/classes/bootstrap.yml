@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: monitor
+  profiles:
+    active: dev
+  cloud:
+      loadbalancer:
+        retry:
+          enabled: true
+      config:
+        discovery:
+          enabled: true
+          service-id: 'config'
+        fail-fast: true
+        label: master
+turbine:
+  app-config: operation
+  aggregator:
+    clusterConfig: finance
+  cluster-name-expression: metadata['cluster']
+  instanceUrlSuffix:
+    finance: 'turbine/hystrix.stream'
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discoverymaster:8882/eureka/

@@ -1,0 +1,54 @@
+<div class="modal-body wrapper-lg">
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="stockOptionCycleEditForm" class="form-horizontal form-validation">
+                <input type="hidden" ng-model="stockOptionCycle.id" />
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <strong>修改期权周期</strong>
+                    </div>
+                    <div class="panel-body pb0">
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">数据id：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionCycle.dataId" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">应用域：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionCycle.domain" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">周期名称：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionCycle.name" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">周期天数：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionCycle.cycle" type="number"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+							<div class="form-group">
+	                            <label class="col-sm-3 control-label">周期月数：</label>
+	                            <div class="col-sm-9">
+	                                <input ng-model="stockOptionCycle.cycleMonth" type="text"  placeholder="" class="form-control" required />    
+	                            </div>
+	                        </div>
+	                        <div class="line line-dashed b-b pull-in"></div>
+                    </div>
+                    <footer class="panel-footer text-right">
+                        <button ng-click="requestStockOptionCycleEdit(stockOptionCycleEditForm.$valid);" type="submit" class="btn btn-success">保存</button>
+                    </footer>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

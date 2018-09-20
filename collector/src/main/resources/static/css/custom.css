@@ -1,0 +1,73 @@
+#logo {
+	display: inline;
+	min-height: 30px;
+}
+/* start dataTable style */
+table.dataTable thead .select-checkbox {
+	padding-right: 10px!important;
+}
+table.dataTable thead .select-checkbox:after {
+	display: none!important;
+}
+.dataTables_length label {
+	margin-top: 4px;
+	margin-bottom: 0px;
+}	
+div.dataTables_paginate ul.pagination {
+	margin: 0px!important;
+}
+table.table-bordered.dataTable {
+	border: 1px solid #eaeeea;
+}
+div.dataTables_filter label {
+	margin-bottom: 2px!important;
+	margin-top: 3px!important;
+}
+.panel .dataTables_wrapper .row{
+	margin: 5px!important;
+}
+.panel .dataTables_wrapper .row:first-child{
+	margin-top: 15px!important;
+}
+.panel .dataTables_wrapper .row:last-child{
+	margin-bottom: 10px!important;
+}
+.btn-table-top button {
+	margin-right: 5px;
+}
+.btn-table-top button i {
+	margin-right: 3px;
+}
+/* end dataTable style */
+
+/* start modal */
+.modal-body {
+	padding: 15px!important;
+}
+.modal-body .panel {
+	margin-bottom: 0px!important;
+}
+.modal-body .panel-body {
+	padding: 10px 15px;
+}
+.modal-body .panel-body {
+	padding: 10px 15px;
+}
+.modal-body .form-group {
+	margin-bottom: 10px;
+}
+.modal-body .panel-footer {
+	border-top: none;
+	padding-top: 0px;
+}
+/* end modal*/
+
+.mb0 {
+	margin-bottom: 0px!important;
+}
+.pb0 {
+	padding-bottom: 0px!important;
+}
+.app.container .app-aside {
+	overflow-y: hidden;
+}
